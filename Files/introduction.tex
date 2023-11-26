@@ -19,4 +19,11 @@ Overall, the motivations behind the existence of the CodeKataBattle platform are
 \end{enumerate}
 
 \subsection{Scope}
-The scope of CKB is to provide a platform for programming practice. The platform will allow students to participate in programming tournaments and solve programming challenges. The platform will also allow educators to create tournaments and set up battles for the tournaments.
+The scope of CKB is to provide a platform for programming practice. The platform will allow students to participate in programming tournaments and solve programming challenges. The torunaments consist of a series of battles. In order to participate to a battle a student must be subscribed to the tournament in which the battle takes place. In each battle the students have to form teams by inviting other students to join.
+The platform will allow educators to create tournaments. For the single torunament, the educator is able to invite other educators to join the tounament as educator.
+The educator is able to create battles for the torunament by uploading the code kata composed by the description and software project. In addition, he should be able to upload a set of configuration for scoring. For each battle the educator is able to set restrictions such as the minimum and maximum number of team members, the registration deadline and the submission deadline. The educator is also able to set a time limit for the battle.
+CKB will assign the scoring for each team of the battle based on some automated tests regarding the functional aspects, timeliness, quality of the code and the set of configuration for scoring provided by the educator for the battle. In addition to this automated scoring the educator will also be able to assign a manual scoring for each team of the battle.
+In order to submit the solution for a battle, CKB provides a GitHub repository. The teams must fork the repository and work on their solution in the forked repository. For each push to the remote repository CKB will be informed through an API call make with GitHub Actions which teams must set up.
+
+\subsubsection{World phenomena}
+\subsubsection{Shared phenomena}
