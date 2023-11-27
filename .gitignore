@@ -11,3 +11,5 @@
 *.out
 *.lof
 *.DS_Store
+.vscode
+
