@@ -23,9 +23,40 @@
 
 \end{enumerate}
 \subsubsection{Domain class Diagram}
+In \figurename~\ref{fig:domain_class_diagram} is shown the domain class diagram of the CKB platform. This diagram shows the main entities of the system and their relationships.
+\begin{itemize}
+    \item \textbf{User}: is the main entity of the system. It represents a user of the CKB platform. It can be either a student or an educator.
+    \item \textbf{Student}: is a user of the CKB platform. It can participate in tournaments and battles. It can also create teams and invite other students to join them.
+    \item \textbf{Educator}: is a user of the CKB platform. It can create and manage tournaments and battles. He can also invite other educators to join a tournament. He also uploads the code kata to the CKB platform for a battle.
+    \item \textbf{Tournament}: is a competition between teams of students. It is created by an educator and it can be joined by students. It can contain multiple battles.
+    \item \textbf{Battle}: is a competition between teams of students. It is created by an educator and it can be joined by students. It is part of a tournament and it can contain multiple teams.
+    \item \textbf{Team}: is a group of students that compete together in a battle. It is created by a student and it can be joined by other students.
+    \item \textbf{Invitation}: is a request sent by a student to another student to join a team. It can be accepted or declined by the receiver.
+    \item \textbf{Code Kata}: is the code that the students have to implement in a battle. It is uploaded by an educator to the CKB platform.
+    \item \textbf{Submission}: is the code that a team of students have implemented for a battle. It is pushed to the forked repository of the battle on Github by the students. The CKB platform will evaluate the submission and update the score of the team.
+    
+\end{itemize}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Diagrams/DomainClassDiagram.jpg}
     \caption{Domain class diagram}
     \label{fig:domain_class_diagram}
+\end{figure}
+
+\subsubsection{Statecharts}
+
+\textbf{Statechart of a Tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Diagrams/TournamentStateChart.jpg}
+    \caption{Statechart of a Tournament}
+    \label{fig:statechart_tournament}
+\end{figure}
+\textbf{Statechart of a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Diagrams/BattleStateChart.jpg}
+    \caption{Statechart of a Battle}
+    \label{fig:statechart_battle}
 \end{figure}
