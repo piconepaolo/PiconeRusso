@@ -32,9 +32,8 @@ In \figurename~\ref{fig:domain_class_diagram} is shown the domain class diagram 
     \item \textbf{Battle}: is a competition between teams of students. It is created by an educator and it can be joined by students. It is part of a tournament and it can contain multiple teams.
     \item \textbf{Team}: is a group of students that compete together in a battle. It is created by a student and it can be joined by other students.
     \item \textbf{Invitation}: is a request sent by a student to another student to join a team. It can be accepted or declined by the receiver.
-    \item \textbf{Code Kata}: is the code that the students have to implement in a battle. It is uploaded by an educator to the CKB platform.
-    \item \textbf{Submission}: is the code that a team of students have implemented for a battle. It is pushed to the forked repository of the battle on Github by the students. The CKB platform will evaluate the submission and update the score of the team.
-    
+    \item \textbf{Code Kata}: is the description of the problem that the student have to solve in a battle. It contains the description of the software project to be implemented, the test cases that the solution must pass and the build automation scripts.
+    \item \textbf{Submission}: is the code that a team of students have implemented for a battle or a subsequent version of a previous submission. It is pushed to the forked repository of the battle by a team member. The CKB platform will evaluate the submission and update the score of the team.
 \end{itemize}
 
 \begin{figure}[H]
@@ -46,14 +45,16 @@ In \figurename~\ref{fig:domain_class_diagram} is shown the domain class diagram 
 
 \subsubsection{Statecharts}
 
-\textbf{Statechart of a Tournament}
+\textbf{Statechart of a Tournament} \\
+The statechart in \figurename~\ref{fig:statechart_tournament} shows the possible states of a tournament. A tounament can be in two principal states: ``In Progress'' or ``Closed''. A tournament is in the ``In Progress'' state when it is created by an educator. When the educator closes the tournament, it will be in the ``Closed'' state.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Diagrams/TournamentStateChart.jpg}
     \caption{Statechart of a Tournament}
     \label{fig:statechart_tournament}
 \end{figure}
-\textbf{Statechart of a Battle}
+\textbf{Statechart of a Battle} \\
+The statechart in \figurename~\ref{fig:statechart_battle} shows the possible states of a battle. When the educator creates a battle it will be in initial ``Created'' state. When the date of the \textit{Start date} is passed the battle will be in the ``In Progress'' state. In this state the students can subscribe to the battle and the teams can submit their own solutions. When the \textit{Submission deadline} is passed the battle will be in the ``Consolidation'' state. In this state the educator can manually update the score of the teams. When the educator closes the tournament, it will be in the ``Closed'' state.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Diagrams/BattleStateChart.jpg}
