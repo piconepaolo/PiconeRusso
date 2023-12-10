@@ -80,3 +80,14 @@ The CKB platform allows the educators to manually update the score of a team. Af
 Once an educator closes a tournament, the CKB platform will notify all the students subscribed to the tournament about the result of the tournament. The notification will contain the list of the teams that have participated in the tournament and their final score.
 \subsubsection{Creation of the repository to sumbit the solution}
 The CKB platform will create a new repository on Github for the battle, and will invite the students to fork it by sending the link of the repository to the students. The repository will contain the code kata provided by the educator and the build automation scripts. The students will be able to push their solution once they have forked the repository and set up the actions to trigger the evaluation of the solution by the CKB platform.
+
+\subsection{User Characteristics}
+The CKB platform is designed to be used by two types of users: \textit{Educators} and \textit{Students}.
+
+\subsubsection{Educator}
+The Educator is the user that manages tournaments and battles. He is able to invite other educators to join a tournament in order to grant them the permission to create battles for that tournament.
+The educator is the user that creates and closes the tournaments and battles (for which he has the permissions to do so in the case he was invited).
+He can set restrictions for the battles such as the deadline for the registration of teams, the deadline for the submission of solutions, the minimum and maximum number of students per team. He provides the code kata for the battle. He can also manually update the score of a team. The educator can be looked at as the administrator for a tournament and battles for that tournament. Nevertheless he cannot compete like a student in a tournament or battle.
+
+\subsubsection{Student}
+The Student is the user that participates in tournaments and battles. He can team up with other students to compete in a battle by forming teams. He can submit the solution of a battle with his team. He can also compete in multiple battles and multiple tournaments with multiple teams at the same time. The student can be looked at as the competitor in a tournament since the ranking of the tournament is per student. Nevertheless he cannot manage tournaments and battles like an educator.
