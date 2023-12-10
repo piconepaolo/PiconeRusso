@@ -33,7 +33,12 @@ In \figurename~\ref{fig:domain_class_diagram} is shown the domain class diagram 
     \item \textbf{Team}: is a group of students that compete together in a battle. It is created by a student and it can be joined by other students.
     \item \textbf{Invitation}: is a request sent by a student to another student to join a team. It can be accepted or declined by the receiver.
     \item \textbf{Code Kata}: is the description of the problem that the student have to solve in a battle. It contains the description of the software project to be implemented, the test cases that the solution must pass and the build automation scripts.
+    \item \textbf{Score}: is the score of a team in a battle. It is calculated by the CKB platform based on the evaluation of the submission of the team. It also adds up the manual score given by the educator. The score assigned to the team, for each battle, is also the score of the students in the tournament.
+    \item \textbf{Ranking}: is the ranking of the students in a tournament. It is calculated by the CKB platform based on the score of the students in the battles of the tournament in which they have participated.
+    \item \textbf{Repository}: is the repository on Github that contains the code kata and the build automation scripts for a battle. It is created by the CKB platform when a battle is created. It is forked by the teams that want to compete in the battle.
+    \item \textbf{Forked Repository}: is the repository forked by a team of students to compete in a battle. It contains the code kata and the build automation scripts for the battle. Each push to the forked repository will trigger the CKB platform to evaluate the submission of the team and update the score of the team.
     \item \textbf{Submission}: is the code that a team of students have implemented for a battle or a subsequent version of a previous submission. It is pushed to the forked repository of the battle by a team member. The CKB platform will evaluate the submission and update the score of the team.
+    \item \textbf{Evalutation}: is the evaluation of a submission. It is done by the CKB platform based on the code kata provided by the educator. It is done automatically by the CKB platform when a submission is pushed to the forked repository of the battle. It is also done manually by the educator when he updates the score of a team.
 \end{itemize}
 
 \begin{figure}[H]
