@@ -69,10 +69,12 @@ The CKB platform allows the users to register and login to the platform. The reg
 The CKB platform allows the educators to create tournaments. The Educator will be prompted to provide the name of the tournament and the deadline for the registration. When the tournament is created, the CKB platform will send a notification to all the students registered to the platform. The Educator, that has done the creation, will be able to invite other educators to join the tournament.
 \subsubsection{Creation of a battle}
 The CKB platform allows the educators to create battles. The Educator will be prompted to provide the name of the battle, the deadline for the registration, the deadline for the submission of the solutions, the minimum and maximum number of students per team and the code kata. When the battle is created, the CKB platform will send a notification to all the students subscribed to the tournament. The CKB platform will also create a new repository on Github for the battle, and will invite the students to fork it.
-\subsubsection{Creation of a team}
-\subsubsection{Invitation to join a team}
-\subsubsection{Submission of a solution}
-\subsubsection{Evaluation of a solution}
+\subsubsection{Creation and joining of a team}
+The students in order to compete in a battle must form or join a team. The CKB platform allows the students to create teams by inviting other students to join their team. The student will be prompted to provide the name of the team, as well as the list of the emails of the students that he wants to invite. The CKB platform will send a notification to the invited students. The invited students will be able to accept or decline the invitation. If they accept, they will be added to the team as long as the minimum and maximum number of students per team (set by the educator) is respected.
+\subsubsection{Submission and evaluation of a solution}
+The students of a team that are competing for a battle can submit their solution to the CKB platform in order to be evaluated. The submission consists of pushing the code that the team has implemented for the battle to the forked repository of the battle previously created by the CKB platform and forked by the team.
+The CKB platform will evaluate the submission using the code kata provided by the educator and will update the score of the team.
 \subsubsection{Manual update of the score}
+The CKB platform allows the educators to manually update the score of a team. After accessing the battle page on the CKB platform, educators can manually adjust a team's score as long as the battle is in the \textit{Consolidation stage}. This feature proves beneficial when evaluating aspects beyond the scope of automatic assessment already done by the platform. On the battle page, educators can view the list of teams that have submitted solutions. By clicking the Update Score' button, a form is opened, allowing the educator to modify the team's current score as assessed by the platform. Once satisfied with the adjustments, clicking the Save' button finalizes the new score.
 \subsubsection{Notification of the result of a tournament}
 \subsubsection{Creation of the repository to sumbit the solution}
