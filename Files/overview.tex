@@ -96,3 +96,23 @@ He can set restrictions for the battles such as the deadline for the registratio
 
 \subsubsection{Student}
 The Student is the user that participates in tournaments and battles. He can team up with other students to compete in a battle by forming teams. He can submit the solution of a battle with his team. He can also compete in multiple battles and multiple tournaments with multiple teams at the same time. The student can be looked at as the competitor in a tournament since the ranking of the tournament is per student. Nevertheless he cannot manage tournaments and battles like an educator.
+
+\subsection{Assumptions, Dependencies and Constraints}
+
+\subsubsection{Regulatory policies}
+The CKB platform will store the informations provided by the user, such as the name, surname and email address and informations on forked repositories. This information will not be used for commercial purposes and they will not be shared with third parties.
+
+\subsubsection{Domain assumptions}
+This paragraph contains the assumptions that the CKB platform makes about the domain in which it operates. These assumptions are out of the scope of the CKB platform and they are not verified by the platform.
+
+\begin{enumerate}[label=D\arabic*:]
+    \item User must have an internet connection
+    \item The Student must have a Github account
+    \item The Educator must have a Github account
+    \item Educator needs to be verified by the CKB platform
+    \item Teams must setup the Github actions to trigger the evaluation of the solution by the CKB platform
+    \item Student needs to accept the invitation to join a team
+    \item Student must be registered to CKB to receive notifications about tournaments
+    \item Student must be registered to the tournament to receive notifications about upcoming battles
+    \item Educator can evaluate the performance of a student in a battle only if the battle is in the \textit{Consolidation} state
+\end{enumerate}
