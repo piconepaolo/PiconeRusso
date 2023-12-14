@@ -35,3 +35,35 @@
     \caption{Student Dashboard Battle Overview}
     \label{fig:student-Tournament-Completed}
 \end{figure}
+
+
+\subsubsection{Hardware Interfaces}
+Since there is no particular hardware requirement for the system, the system will be able to run on any hardware that can run a web browser and has an internet connection.
+
+\subsubsection{Software Interfaces}
+The system in order to perform its functions does not require any interaction with other software systems.
+
+\subsubsection{Communication Interfaces}
+The system provides the functionality of automatic evaluation. This function requires the system to communicate with an external client that triggers this automatic actions. In particular, the system needs to expose an API that the GitHub Action set up by the students will call when a new commit is pushed.
+
+\subsection{Functional Requirements}
+This section specifies all the requirements that the system must satisfy in order to be considered complete and functional.
+
+\begin{enumerate}[label=R\arabic*:]
+    \item The system shall allow the user to register to the system
+    \item The system shall allow the user to login to the system
+    \item The system shall allow the educator to create a new tournament
+    \item The system should allow the educator to create a new battle for a tournament
+    \item The system shall allow the student to subscribe to a tournament
+    \item The system shall allow the student to subscribe to a battle
+    \item The system shall create a forkable repository for each battle
+    \item The system shall allow the student to create a team for a battle
+    \item The system should allow the student to invite other students to join a team
+    \item The system should notify students subscribed to the platform when a new tournament is created
+    \item The system should notify students subscribed to a tournament when a new battle is created
+    \item The system shall guarantee that the restrictions for a battle set by the educator are respected
+    \item The system shall allow the educator to set the restrictions for a battle
+    \item The system shall allow the educator that created a tournament to invite other educators to the tournament
+    \item The system shall allow the educator to close a tournament
+    \item The system should allow the educator to manually update the score of a team for a battle
+\end{enumerate}
