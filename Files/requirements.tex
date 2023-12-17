@@ -104,21 +104,262 @@ This section specifies all the requirements that the system must satisfy in orde
         Exceptions & Row 6, Column 2 \\
         \hline
     \end{tabular}
-    \item \textbf{Creation of a tournament}
-    \item \textbf{Close a tournament}
-    \item \textbf{Creation of a battle}
+    \item \textbf{Creation of a tournament} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Creation of a torunament \\
+        \hline
+        Actors & Educator, Student \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Educator is subscribed to CKB platform
+            \item The Student is subscribed to CKB platform
+        \end{itemize}
+        \\
+        \hline
+        Event flow & 
+        \begin{enumerate}[label=\arabic*.]
+            \item The Educator logs in to the system
+            \item The Educator clicks on the `Create Tournament button
+            \item The Educator fills the form with the information about the tournament and the registration deadline
+            \item The Educator clicks on the `Create button
+            \item The system creates the tournament
+            \item The system notifies the subscribed students about the creation of the new tournament
+        \end{enumerate}
+        \\
+        \hline
+        Exit condition & The Educator successfully created the torunament \\
+        \hline
+    \end{tabular}
+    \item \textbf{Close a tournament} 
+    \item \textbf{Creation of a battle} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Creation of a battle \\
+        \hline
+        Actors & Educator, Student, GitHub \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Educator is subscribed to CKB platform
+            \item The Student is subscribed to CKB platform
+            \item The Educator created a tournament
+            \item The Student is subscribed to the tournament
+        \end{itemize}
+        \\
+        \hline
+        Event flow & 
+        \begin{enumerate}[label=\arabic*.]
+            \item The Educator logs in to the system
+            \item The Educator goes to the tournament page in which he wants to create a battle for
+            \item The Educator clicks on the `Create Battle button
+            \item The Educator fills the form with the registration deadline, submission deadline, minimum number of students per team, maximum number of students per team
+            \item The Educator click the `Upload Code Kata' button and selects the files to upload
+            \item The Educator clicks on the `Create button
+            \item The system creates the battle
+            \item GitHub creates a forkable repository for the battle
+            \item The system sends the link of the repository to the subscribed students
+            \item The system notifies the subscribed students about the creation of the new battle
+        \end{enumerate}
+        \\
+        \hline
+        Exit condition & The Educator successfully created the battle \\
+        \hline
+    \end{tabular}
     \item \textbf{Upload of code kata}
     \item \textbf{Set restrinctions for a battle}
     \item \textbf{Manual score update}
-    \item \textbf{Invite other educators to a tournament}
+    \item \textbf{Invite other educators to a tournament} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Invite other educators to a tournament \\
+        \hline
+        Actors & Educator \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Educator is subscribed to CKB platform
+            \item The Educator created a tournament
+        \end{itemize}
+        \\
+        \hline
+        Event flow & 
+        \begin{enumerate}[label=\arabic*.]
+            \item The Educator logs in to the system
+            \item The Educator goes to the tournament page in which he wants to invite other educators
+            \item The Educator clicks on the `Invite Educator' button
+            \item The Educator fills the form with the email of the educator to invite
+            \item The Educator clicks on the `Invite' button
+            \item The system sends an email to the educator to invite
+        \end{enumerate}
+        \\
+        \hline
+        Exit condition &
+        \begin{itemize}
+            \item The Educator successfully invited the other educator to the tournament
+            \item The invited educator can create battles for the tournament
+        \end{itemize} \\
+        \hline
+        Exceptions & The invited educator is not subscribed to the platform \\
+        \hline
+    \end{tabular}
     \item \textbf{Notification to a student}
-    \item \textbf{Subscribe to a tournament}
+    \item \textbf{Subscribe to a tournament} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Student subscribe to a tournament \\
+        \hline
+        Actors & Student \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Student is subscribed to CKB platform
+            \item The Educator created a tournament
+            \item The Student is not subscribed to the tournament
+        \end{itemize}
+        \\
+        \hline
+        Event flow &
+        \begin{enumerate}[label=\arabic*.]
+            \item The Student logs in to the system
+            \item The Student goes to the tournament page in which he wants to subscribe
+            \item The Student clicks on the `Subscribe' button
+        \end{enumerate} \\
+        \hline
+        Exit condition & The student is subscibed to the tournament \\
+        \hline
+        Exceptions & The registration deadline of the tournament is passed so
+        the student cannot subscribe to the tournament \\
+        \hline
+    \end{tabular}
     \item \textbf{Subscribe to a battle}
-    \item \textbf{Accept invitation to a team for a battle}
+    \item \textbf{Accept invitation to a team for a battle} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Accept invitation to a team for a battle \\
+        \hline
+        Actors & Student \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Student is subscribed to CKB platform
+            \item The Student is subscribed to the tournament in which the battle is
+            \item The Student is subscribed to the battle
+            \item The Student is not in a team for the battle
+        \end{itemize} \\
+        \hline
+        Event flow &
+        \begin{enumerate}[label=\arabic*.]
+            \item The Student logs in to the system
+            \item The Student goes to the notification page
+            \item The Student clicks on the `Accept Invitation' button
+            \item The system adds the student to the team for the battle
+        \end{enumerate} \\
+        \hline
+        Exit condition & The invited student is part of the team for the battle \\
+        \hline
+        Exceptions &
+        \begin{itemize}
+            \item The submission deadline of the battle is passed so the student cannot subscribe to the battle
+            \item The maximum number of students per team is reached so the student cannot subscribe to the Battle
+            \item The invitation is expired so the student cannot subscribe to the battle
+        \end{itemize} \\
+        \hline
+    \end{tabular}
     \item \textbf{Creation of a team for a battle}
-    \item \textbf{Invite other students to the team}
+    \item \textbf{Invite other students to the team} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Invite other students to the team \\
+        \hline
+        Actors & Student \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Student is subscribed to CKB platform
+            \item The Student is subscribed to the tournament in which the battle is
+            \item The Student is subscribed to the battle
+        \end{itemize} \\
+        \hline
+        Event flow &
+        \begin{enumerate}[label=\arabic*.]
+            \item The Student logs in to the system
+            \item The Student goes to the tournament page
+            \item The Student selects the battle in which he wants to invite other students
+            \item The Student clicks on the `Invite people' button
+            \item The Student fills the form with the email of the students to invite
+            \item The Student clicks on the `Invite' button
+        \end{enumerate} \\
+        \hline
+        Exit condition & The student has been successfully invited to the team \\
+        \hline
+        Exceptions & The student invited is not registered on the CKB platform so he will not receive the invitation \\
+        \hline
+    \end{tabular}
     \item \textbf{Fork repository of a battle}
-    \item \textbf{Submission of a solution for a battle}
+    \item \textbf{Submission of a solution for a battle} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Submission of a solution for a battle \\
+        \hline
+        Actors & Student, GitHub \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Student is subscribed to CKB platform
+            \item The Student is subscribed to the tournament in which the battle is
+            \item The Student is subscribed to the battle
+            \item The Student is part of a team for the battle
+            \item The Student has forked the repository of the battle
+            \item The Student set up the GitHub Action to trigger the automatic evaluation
+        \end{itemize} \\
+        \hline
+        Event flow &
+        \begin{enumerate}[label=\arabic*.]
+            \item The Student writes the solution for the battle
+            \item The Student pushes the solution on the team repository
+            \item GitHub triggers the automatic evaluation
+            \item The system evaluates the solution
+            \item The system updates the score of the team
+        \end{enumerate} \\
+        \hline
+        Exit condition & The team has got a new score for the battle \\
+        \hline
+        Exceptions & The submission deadline of the battle is passed so the student submission is not evaluated \\
+        \hline
+    \end{tabular}
     \item \textbf{Push on team repository}
-    \item \textbf{Automatic evaluation of a submission}
+    \item \textbf{Automatic evaluation of a submission} \\
+    \begin{tabular}{|p{3cm}|p{8cm}|}
+        \hline
+        Name & Automatic evaluation of a submission \\
+        \hline
+        Actors & GitHub, Student \\
+        \hline
+        Entry condition &
+        \begin{itemize}
+            \item The Student is subscribed to CKB platform
+            \item The Student is subscribed to the tournament in which the battle is
+            \item The Student is subscribed to the battle
+            \item The Student is part of a team for the battle
+            \item The Student has forked the repository of the battle
+            \item The Student set up the GitHub Action to trigger the automatic evaluation
+            \item The Student has pushed the solution on the team repository
+        \end{itemize} \\
+        \hline
+        Event flow &
+        \begin{enumerate}[label=\arabic*.]
+            \item GitHub triggers the automatic evaluation
+            \item The system builds the project with the building tool associated with the battle
+            \item The system runs the tests associated with the battle on the built project
+            \item The system calculate the score of the submission
+            \item The system updates the score of the team
+        \end{enumerate} \\
+        \hline
+        Exit condition & The team has got a new score for the battle \\
+        \hline
+        Exceptions & The submission deadline of the battle is passed so the student submission is not evaluated \\
+        \hline
+    \end{tabular}
 \end{enumerate}
