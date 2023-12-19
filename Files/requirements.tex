@@ -112,13 +112,13 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The user clicks on the `Login' button
             \item The system checks the credentials
             \item The system logs in the user
+            \item The user is redirected to the dashboard
         \end{enumerate}
         \\
         \hline
         Exit condition & 
         \begin{itemize}
             \item The user is logged in
-            \item The user is redirected to the dashboard
         \end{itemize}
         \\
         \hline
@@ -263,7 +263,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Actors & Educator \\
         \hline
-        Entry condition &
+        Entry condition &   
         \begin{itemize}
             \item The Educator is subscribed to CKB platform
             \item The Educator is logged in
@@ -337,7 +337,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Educator creates a tournament, closes or creates a battle
+            \item The Educator creates or closes a tournament or a battle
             \item The system notifies the subscribed students about the event
         \end{enumerate}
         \\
@@ -621,6 +621,54 @@ This section specifies all the requirements that the system must satisfy in orde
 \end{enumerate}
 
 \subsubsection{Sequence diagrams}
+\subsubsection*{[UC1] Login}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC1SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Login Use Case}
+    \label{fig:sequence-diagram-login}
+\end{figure}
+
+\subsubsection*{[UC3] Close a tournament}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC3SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Close a tournament Use Case}
+    \label{fig:sequence-diagram-close-tournament}
+\end{figure}
+
+\subsubsection*{[UC5] Upload of code kata}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC5SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Upload of code kata Use Case}
+    \label{fig:sequence-diagram-upload-code-kata}
+\end{figure}
+
+\subsubsection*{[UC6] Manual score update}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC6SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Manual score update Use Case}
+    \label{fig:sequence-diagram-manual-score-update}
+\end{figure}
+
+\subsubsection*{[UC8] Notification to a student}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC8SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Notification to a student Use Case}
+    \label{fig:sequence-diagram-notification}
+\end{figure}
+
+\subsubsection*{[UC10] Subscribe to a battle}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC10SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Subscribe to a battle Use Case}
+    \label{fig:sequence-diagram-subscribe-battle}
+\end{figure}
+
 \subsubsection{Requirements mapping}
 \begin{tabular}{|p{6cm}|p{6cm}|}
     \hline
