@@ -591,7 +591,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Name & Automatic evaluation of a submission \\
         \hline
-        Actors & GitHub, Student \\
+        Actors & GitHub \\
         \hline
         Entry condition &
         \begin{itemize}
@@ -610,7 +610,6 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The system builds the project with the building tool associated with the battle
             \item The system runs the tests associated with the battle on the built project
             \item The system calculate the score of the submission
-            \item The system updates the score of the team
         \end{enumerate} \\
         \hline
         Exit condition & The team has got a new score for the battle \\
@@ -621,6 +620,63 @@ This section specifies all the requirements that the system must satisfy in orde
 \end{enumerate}
 
 \subsubsection{Sequence diagrams}
+\subsubsection*{[UC2] Creation of a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/TournamentCreationSD.jpg}
+    \caption{Sequence Diagram - Creation of a tournament}
+    \label{fig:sequence-diagram-create-tournament}
+\end{figure}
+
+\subsubsection*{[UC4] Creation of a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/BattleCreation.jpg}
+    \caption{Sequence Diagram - Creation of a battle}
+    \label{fig:sequence-diagram-create-battle}
+\end{figure}
+\subsubsection*{[UC7] Invite othe educators to a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/InviteEducators.jpg}
+    \caption{Sequence Diagram - Invite other educators to a tournament}
+    \label{fig:sequence-diagram-invite-educator}
+\end{figure}
+\subsubsection*{[UC9] Subscribe to a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentSubscription.jpg}
+    \caption{Sequence Diagram - Subscribe to a tournament}
+    \label{fig:sequence-diagram-subscribe-tournament}
+\end{figure}
+\subsubsection*{[UC11] Accept invitation to a team for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentAcceptInvitation.jpg}
+    \caption{Sequence Diagram - Accept invitation to a team for a battle}
+    \label{fig:sequence-diagram-accept-invitation}
+\end{figure}
+\subsubsection*{[UC13] Invite other students to the team}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentInvitation.jpg}
+    \caption{Sequence Diagram - Invite other students to the team}
+    \label{fig:sequence-diagram-invite-students}
+\end{figure}
+\subsubsection*{[UC15] Submission of a solution for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/Submission.jpg}
+    \caption{Sequence Diagram - Submission of a solution for a battle}
+    \label{fig:sequence-diagram-submission}
+\end{figure}
+\subsubsection*{[UC17] Automatic evaluation of a submission}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/AutomaticEvaluation.jpg}
+    \caption{Sequence Diagram - Automatic evaluation of a submission}
+    \label{fig:sequence-diagram-automatic-evaluation}
+\end{figure}
 \subsubsection{Requirements mapping}
 \begin{tabular}{|p{6cm}|p{6cm}|}
     \hline
