@@ -912,3 +912,15 @@ This section specifies all the requirements that the system must satisfy in orde
     \\
     \hline
 \end{tabular}
+
+\subsection{Performance Requirements}
+Since the system needs to perform the automatic evaluation of the submission of the teams, the system should be at least able to perform concurrent evaluations of the submissions equal to the number of teams in the battle in order to avoid misleading scores for the consolidation stage.
+
+\subsection{Design Constraints}
+\subsubsection{Standards compliance}
+About privacy and security, the system should comply with the GDPR regulation and the OWASP security standards.
+The system should adopt standards regarding the rapresentation of date and time, in order to avoid confusion between different formats.
+\subsubsection{Hardware limitations}
+The platform should be able to run on any device with a browser and an internet connection and should not require any specific hardware.
+\subsubsection{Any other constraint}
+Since the platform is a web application, it should be compatbile with any screen size and should be responsive. Moreover the platform should be easy to use and intuitive.
