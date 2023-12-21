@@ -1,35 +1,35 @@
 \subsection{External Interfaces}
 \subsubsection{User Interfaces}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Dashboard-Student.png}
     \caption{Student Dashboard}
     \label{fig:student-dashboard}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Dashboard-Tournament.png}
     \caption{Student Dashboard Tournaments Tab}
     \label{fig:student-dashboard-tournaments}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Dashboard-Tournament-OverView.png}
     \caption{Student Dashboard Tournament OverView}
     \label{fig:student-Tournament-OverView}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Dashboard-Tournament-Ongoing.png}
     \caption{Student Dashboard Tournament Ongoing}
     \label{fig:student-Tournament-Ongoing}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Dashboard-Battle-Overview.png}
     \caption{Student Dashboard Battle Overview}
@@ -61,7 +61,7 @@
 Since there is no particular hardware requirement for the system, the system will be able to run on any hardware that can run a web browser and has an internet connection.
 
 \subsubsection{Software Interfaces}
-The system in order to perform its functions does not require any interaction with other software systems.
+The system will utilize the GitHub API to streamline its operations. It will be used to create repository by CKB Platform and to trigger real-time evaluations of submissions. This approach ensures efficient management and transparent, interactive engagement for participants directly within their GitHub environment.
 
 \subsubsection{Communication Interfaces}
 The system provides the functionality of automatic evaluation. This function requires the system to communicate with an external client that triggers this automatic actions. In particular, the system needs to expose an API that the GitHub Action set up by the students will call when a new commit is pushed.
@@ -93,7 +93,7 @@ This section specifies all the requirements that the system must satisfy in orde
 
 \subsubsection{Use Cases Diagram}
 \subsubsection*{Educator Use Diagram}
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Diagrams/EducatorUseCaseDiagram.jpg}
     \caption{Educator Use Cases Diagram}
@@ -101,7 +101,7 @@ This section specifies all the requirements that the system must satisfy in orde
 \end{figure}
 
 \subsubsection*{Student Use Diagram}
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Diagrams/StudentUseCaseDiagram.jpg}
     \caption{Student Use Cases Diagram}
@@ -132,13 +132,13 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The user clicks on the `Login' button
             \item The system checks the credentials
             \item The system logs in the user
+            \item The user is redirected to the dashboard
         \end{enumerate}
         \\
         \hline
         Exit condition & 
         \begin{itemize}
             \item The user is logged in
-            \item The user is redirected to the dashboard
         \end{itemize}
         \\
         \hline
@@ -283,7 +283,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Actors & Educator \\
         \hline
-        Entry condition &
+        Entry condition &   
         \begin{itemize}
             \item The Educator is subscribed to CKB platform
             \item The Educator is logged in
@@ -357,7 +357,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Educator creates a tournament, closes or creates a battle
+            \item The Educator creates or closes a tournament or a battle
             \item The system notifies the subscribed students about the event
         \end{enumerate}
         \\
@@ -611,7 +611,7 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Name & Automatic evaluation of a submission \\
         \hline
-        Actors & GitHub, Student \\
+        Actors & GitHub \\
         \hline
         Entry condition &
         \begin{itemize}
@@ -630,7 +630,6 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The system builds the project with the building tool associated with the battle
             \item The system runs the tests associated with the battle on the built project
             \item The system calculate the score of the submission
-            \item The system updates the score of the team
         \end{enumerate} \\
         \hline
         Exit condition & The team has got a new score for the battle \\
@@ -641,6 +640,140 @@ This section specifies all the requirements that the system must satisfy in orde
 \end{enumerate}
 
 \subsubsection{Sequence diagrams}
+\subsubsection*{[UC1] Login}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC1SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Login Use Case}
+    \label{fig:sequence-diagram-login}
+\end{figure}
+
+\subsubsection*{[UC2] Creation of a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/TournamentCreationSD.jpg}
+    \caption{Sequence Diagram - Creation of a tournament}
+    \label{fig:sequence-diagram-create-tournament}
+\end{figure}
+
+\subsubsection*{[UC3] Close a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC3SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Close a tournament Use Case}
+    \label{fig:sequence-diagram-close-tournament}
+\end{figure}
+
+\subsubsection*{[UC4] Creation of a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/BattleCreation.jpg}
+    \caption{Sequence Diagram - Creation of a battle}
+    \label{fig:sequence-diagram-create-battle}
+\end{figure}
+
+\subsubsection*{[UC5] Upload of code kata}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC5SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Upload of code kata Use Case}
+    \label{fig:sequence-diagram-upload-code-kata}
+\end{figure}
+
+\subsubsection*{[UC6] Manual score update}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC6SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Manual score update Use Case}
+    \label{fig:sequence-diagram-manual-score-update}
+\end{figure}
+
+\subsubsection*{[UC7] Invite othe educators to a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/InviteEducators.jpg}
+    \caption{Sequence Diagram - Invite other educators to a tournament}
+    \label{fig:sequence-diagram-invite-educator}
+\end{figure}
+\subsubsection*{[UC8] Notification to a student}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC8SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Notification to a student Use Case}
+    \label{fig:sequence-diagram-notification}
+\end{figure}
+
+\subsubsection*{[UC9] Subscribe to a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentSubscription.jpg}
+    \caption{Sequence Diagram - Subscribe to a tournament}
+    \label{fig:sequence-diagram-subscribe-tournament}
+\end{figure}
+\subsubsection*{[UC10] Subscribe to a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC10SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Subscribe to a battle Use Case}
+    \label{fig:sequence-diagram-subscribe-battle}
+\end{figure}
+
+\subsubsection*{[UC11] Accept invitation to a team for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentAcceptInvitation.jpg}
+    \caption{Sequence Diagram - Accept invitation to a team for a battle}
+    \label{fig:sequence-diagram-accept-invitation}
+\end{figure}
+
+\subsubsection*{[UC12] Creation of a team for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC12SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Creation of a team for a battle Use Case}
+    \label{fig:sequence-diagram-create-team}
+\end{figure}
+
+\subsubsection*{[UC13] Invite other students to the team}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/StudentInvitation.jpg}
+    \caption{Sequence Diagram - Invite other students to the team}
+    \label{fig:sequence-diagram-invite-students}
+\end{figure}
+
+\subsubsection*{[UC14] Fork repository of a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC14SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Fork repository of a battle Use Case}
+    \label{fig:sequence-diagram-fork-repository}
+\end{figure}
+
+\subsubsection*{[UC15] Submission of a solution for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/Submission.jpg}
+    \caption{Sequence Diagram - Submission of a solution for a battle}
+    \label{fig:sequence-diagram-submission}
+\end{figure}
+
+\subsubsection*{[UC16] Push on team repository}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UC16SequenceDiagram.jpg}
+    \caption{Sequence Diagram for the Push on team repository Use Case}
+    \label{fig:sequence-diagram-push-repository}
+\end{figure}
+
+\subsubsection*{[UC17] Automatic evaluation of a submission}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/AutomaticEvaluation.jpg}
+    \caption{Sequence Diagram - Automatic evaluation of a submission}
+    \label{fig:sequence-diagram-automatic-evaluation}
+\end{figure}
+
 \subsubsection{Requirements mapping}
 \begin{tabular}{|p{6cm}|p{6cm}|}
     \hline
