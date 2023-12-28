@@ -1,0 +1,101 @@
+\setlength{\headheight}{13.59999pt}
+\addtolength{\topmargin}{-1.59999pt}
+
+\subsection{Purpose}
+The motivation behind the existence of the CodeKataBattle platform is to provide students with a dedicated platform for practicing their programming skills. The platform aims to create a competitive environment where teams of students can participate in programming tournaments and solve programming challenges.
+
+By offering a platform specifically designed for programming practice, CodeKataBattle aims to provide students with a structured and engaging way to improve their coding abilities. The competitive nature of the platform adds an extra layer of motivation and excitement, encouraging students to push their limits and strive for excellence.
+
+Overall, the motivations behind the existence of the CodeKataBattle platform are to create a dedicated space for programming practice, foster healthy competition among students, and provide a means for tracking and improving programming skills.
+
+\subsubsection{Goals}
+\begin{enumerate}
+    \item[G1] Educator can create a tournament
+    \item[G2] Educator can set up battles for a tournament
+    \item[G3] Student can participate in a tournament
+    \item[G4] Team of students can submit a solution for a battle
+    \item[G5] Educator can manually update the score of a team in a battle
+    \item[G6] CKB notify the student about upcoming tournaments
+    \item[G7] CKB notify the student about upcoming battles
+\end{enumerate}
+
+\subsection{Scope}
+The scope of CKB is to provide a platform for programming practice. The platform will allow students to participate in programming tournaments and solve programming challenges. The torunaments consist of a series of battles. In order to participate to a battle a student must be subscribed to the tournament in which the battle takes place. In each battle the students have to form teams by inviting other students to join.
+The platform will allow educators to create tournaments. For the single torunament, the educator is able to invite other educators to join the tounament as educator.
+The educator is able to create battles for the torunament by uploading the code kata composed by the description and software project. In addition, he should be able to upload a set of configuration for scoring. For each battle the educator is able to set restrictions such as the minimum and maximum number of team members, the registration deadline and the submission deadline. The educator is also able to set a time limit for the battle.
+CKB will assign the scoring for each team of the battle based on some automated tests regarding the functional aspects, timeliness, quality of the code and the set of configuration for scoring provided by the educator for the battle. In addition to this automated scoring the educator will also be able to assign a manual scoring for each team of the battle.
+In order to submit the solution for a battle, CKB provides a GitHub repository. The teams must fork the repository and work on their solution in the forked repository. For each push to the remote repository CKB will be informed through an API call made with GitHub Actions which teams must set up.
+
+\subsubsection{World phenomena}
+\begin{itemize}
+    \item[WP1] Student wants to compete in a tournament
+    \item[WP2] Educator wants to create a tournament
+    \item[WP3] Educator wants to manually evaluate the performance of a student in a battle 
+    \item[WP4] Educator wants to set up a battle for a tournament
+\end{itemize}
+\subsubsection{Shared phenomena}
+Phenomena controlled by the world and observed by the machine:
+\begin{itemize}
+    \item[SP1] Student push the solution of the battle to the forked repository
+    \item[SP2] Educator sets deadlines for tournaments and battles
+    \item[SP3] Educator sets the configuration for scoring
+    \item[SP4] Educator uploads the code kata for a battle to CKB
+    \item[SP5] Educator sets the restrictions for a battle    
+    % educator manual evalutation (??)
+\end{itemize}
+Phenomena controlled by the machine and observed by the world:
+\begin{itemize}
+    \item[SP6] CKB notifies the student about upcoming tournaments and battles
+    \item[SP7] CKB notifies about the students about the results of the battle and the tournament
+    \item[SP8] CKB shows information about the scoring of the battle and the tournament
+    \item[SP9] CKB provides a GitHub repository for each battle
+\end{itemize}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions}
+\begin{itemize}
+    \item \textbf{Educator}: a person who is responsible for creating and managing tournaments and battles
+    \item \textbf{Student}: a person who is participating in tournaments and battles
+    \item \textbf{Team}: a group of students that participate in a battle
+    \item \textbf{Battle}: a programming challenge that takes place in a tournament
+    \item \textbf{Code Kata}: a programming challenge that defines a battle
+    \item \textbf{GitHub}: a web-based hosting service for version control using Git
+    \item \textbf{GitHub Actions}: a feature of GitHub that allows automating tasks
+    \item \textbf{GitHub repository}: a storage space where the project files are stored
+    \item \textbf{GitHub fork}: a copy of a repository
+    \item \textbf{Platform}: The interface that allows the interaction between the user and the system
+    \item \textbf{System}: The software that implements the functionalities of the platform
+\end{itemize}
+\subsubsection{Acronyms}
+\begin{itemize}
+    \item \textbf{CKB}: CodeKataBattle
+\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+    \item \textbf{WP}: World Phenomena
+    \item \textbf{SP}: Shared Phenomena
+    \item \textbf{G}: Goal
+    \item \textbf{R}: Requirement
+    \item \textbf{UC}: Use Case
+    \item \textbf{UI}: User Interface
+    \item \textbf{API}: Application Programming Interface
+\end{itemize}
+\subsection{Revision history}
+
+\subsection{Reference documents}
+This document is based on:
+\begin{itemize}
+    \item The specification of the RASD assignment of the Software Engineering 2 course
+    \item The slides of the Software Engineering 2 course
+\end{itemize}
+
+\subsection{Document structure}
+This document is structured as follows:
+\begin{itemize}
+    \item \textbf{Introduction}: it provides a general description of the product, its purpose and the goals that the project aims to achieve. It also contains the scope of the product, the phenomena that the product will interact with and the shared phenomena between the product and the world. Finally, it contains the definitions, acronyms and abbreviations used in the document.
+    \item \textbf{Overall Description}: it's a high level description of the product. It contains the product perspective, the product functions, the user characteristics, the constraints, the assumptions and the dependencies of the product.
+    \item \textbf{Specific Requirements}: it contains the functional and non-functional requirements of the product. It also contains the use cases, the sequence diagrams of the most important use cases and the external interfaces.
+    \item \textbf{Formal Analysis}: it contains the Alloy model of the product.
+    \item \textbf{Effort Spent}: it contains the number of hours spent by each member of the group to redact this document.
+    \item \textbf{References}: it contains the list of the documents used to redact this document.
+\end{itemize}
