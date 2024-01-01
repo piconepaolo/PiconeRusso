@@ -26,12 +26,39 @@ Moving inward, the Application layer serves as the system's operational core, wh
 The final segment of the diagram is the Data Access layer, echoing the security and balance themes with its own firewall and load balancer, underscoring the system's commitment to secure data transactions. At the heart of this layer lies the database server, a robust storage solution that ensures data is efficiently stored, retrieved, and managed, completing the architecture's promise of a secure, scalable, and resilient web application environment.
 
 \subsection{Component view}
+In Figure\ \ref{fig:component_diagram} is shown the component diagram of the system. The system is divided into three main layers: presentation layer, application layer and data layer. The presentation layer is the interface between the user and the system and it is represented with the WebApp and Web Server Component. The application layer is the core of the CKB Platform and it is representend by the Application Server Subsystem. Finally the data layer is represented by the DBMS Component who is the only one that access the database.
 \begin{figure}[H]
     \centering
     \includegraphics[angle=90,origin=c,width=0.6\textwidth]{Diagrams/ComponentDiagram.jpg}
     \caption{Component diagram}
     \label{fig:component_diagram}
 \end{figure}
+\clearpage
+Regarding the presentation layer, it is represented by the following two components:
+\begin{itemize}
+    \item \textbf{WebApp}: it is the web application that the user interacts with. It is responsible for the presentation of the data and the interaction with the user. Since it communicates only with the Web Server, it can be executed by any device that has a web browser.
+    \item \textbf{Web Server}: it is the component that handles the requests from the WebApp and forwards them to the Application Server. It is responsible to direct the requests to the APIGateway. It is also responsible to forward responses from the Application Server to the WebApp.
+\end{itemize}
+Regarding the application layer, it is represented by the components inside the Application Server Subsystem:
+\begin{itemize}
+    \item \textbf{APIGateway}: it is the component that handles the incoming requests to the Application Server. It is responsible to direct the requests to the correct component inside the Application Server Subsystem. It is also responsible to forward responses from the Application Server to the Web Server.
+    \item \textbf{Login Manager}: it is the component that handles the login requests. It is responsible to check the credentials and to log the user in.
+    \item \textbf{Registration Manager}: it is the component that handles the registration requests. It is responsible to create a new user.
+    \item \textbf{Authorization Manager}: it is the component that handles the authorization requests. It is responsible to check if the user is authorized to perform the requested action. This is of paramount importance since only a user with Educator role can perform administrative actions, such as the creation of a new Tournament or Battle.
+    \item \textbf{Evaluation Manager}: it is the component that handles the evaluation requests. It is responsible to evaluate the submissions of the students and to return the results. It performs the evaluation by running and testing the submissions provided by the students. It can be used also by the Educator to re-evaluate the submissions manually.
+    \item \textbf{Ranking Manager}: it is the component that handles the rank of students in a Tournament.
+    \item \textbf{Team Manager}: it is the component that handles the creation of teams and the assignment of students to teams. It is also responsible to guarantee that the restrictions on the number of students per team, set by the Educator, are respected.
+    \item \textbf{Submission Manager}: it is the component that handles the submission of the students. The submission is created when the GitHub Action is triggered by the push of the student in the Team repository. It interacts with the Evaluation Manager to get the evaluation of the submission.
+    \item \textbf{Invitation Manager}: it is the component that handles the invitation of both Students and Educator. In the case of the Students it is responsible to manage the invitation to join a Team. In the case of the Educator it is responsible to manage the invitation to join a Tournament.
+    \item \textbf{Notification Manager}: it is the component that handles the notification requests. It is responsible to send notifications to the users. Such notifications are sent respecting the conditions previously specified in the RASD document.
+    \item \textbf{Battle Manager}: it is the component that handles the creation and the management of Battles by the Educator. It is a complex component since it embodies also the CodeKata Manager. Since it contains the CodeKata Manager, it is responsible to handle the CodeKata files uploaded by the Educator. It interacts with the GitHub Component to create the repositories for the Battles. It also handles the different Battle phases, by guaranteeing the deadline restrictions set by the Educator.
+    \item \textbf{Tournament Manager}: it is the component that handles the creation and the management of Tournaments by the Educator. It is responsible to handle the different Tournament phases, by guaranteeing the deadline restrictions set by the Educator.
+\end{itemize}
+Regarding the data layer, it is represented by the following component:
+\begin{itemize}
+    \item \textbf{DBMS}: it is the component that handles the access to the database. It is responsible to store and retrieve the data from the database. It is the only component that can access the database.
+\end{itemize}
+
 \subsection{Deployment view}
 \subsection{Component interfaces}
 \subsection{Runtime view}
