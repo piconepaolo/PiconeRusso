@@ -85,6 +85,75 @@ Regarding the data tier, it is represented by the following components:
     \item \textbf{DBMS}: it is the software that manages the database. It is responsible to store and retrieve the data from the database. It is the only component that can access the database.
 \end{itemize}
 \subsection{Component interfaces}
+
+% Define an interface for LoginManager
+\textbf{Interface} LoginManager:
+\begin{itemize}
+    \item \texttt{Session login(String username, String password);}
+    \item \texttt{void logout(Session session);}
+\end{itemize}
+
+% Define an interface for RegistrationManager
+\textbf{Interface} RegistrationManager:
+\begin{itemize}
+    \item \texttt{boolean register(UserDetails userDetails);}
+\end{itemize}
+
+% Define an interface for AuthorizationManager
+\textbf{Interface} AuthorizationManager:
+\begin{itemize}
+    \item \texttt{List<Role> getRoles(User user);}
+\end{itemize}
+
+% Define an interface for BattleManager
+\textbf{Interface} BattleManager:
+\begin{itemize}
+    \item \texttt{Battle createBattle(BattleDetails details);}
+    \item \texttt{boolean uploadFiles(Battle battle, CodeKata files);}
+    \item \texttt{boolean updateBattle(Battle battle, BattleDetails details);}
+\end{itemize}
+
+% Define an interface for TournamentManager
+\textbf{Interface} TournamentManager:
+\begin{itemize}
+    \item \texttt{Tournament createTournament(TournamentDetails details);}
+    \item \texttt{boolean updateTournament(Tournament tournament, TournamentDetails details);}
+\end{itemize}
+
+% Define an interface for InvitationManager
+\textbf{Interface} InvitationManager:
+\begin{itemize}
+    \item \texttt{boolean sendInvitation(User user, Invitation invitation);}
+    \item \texttt{boolean acceptInvitation(Invitation invitation);}
+    \item \texttt{boolean declineInvitation(Invitation invitation);}
+\end{itemize}
+
+% Define an interface for RankingManager
+\textbf{Interface} RankingManager:
+\begin{itemize}
+    \item \texttt{void updateRank(User user, int newRank);}
+    \item \texttt{int viewRank(User user);}
+\end{itemize}
+
+% Define an interface for SubmissionManager
+\textbf{Interface} SubmissionManager:
+\begin{itemize}
+    \item \texttt{SubmissionResult submit(Item item);}
+    \item \texttt{Item getSubmission(int submissionId);}
+\end{itemize}
+
+% Define an interface for NotificationManager
+\textbf{Interface} NotificationManager:
+\begin{itemize}
+    \item \texttt{void notify(User user, Notification notification);}
+\end{itemize}
+
+% Define an interface for ModelManager
+\textbf{Interface} ModelManager:
+\begin{itemize}
+    \item \texttt{boolean saveModel(DataModel model);}
+    \item \texttt{DataModel getModel(int modelId);}
+\end{itemize}
 \subsection{Runtime view}
 \subsection{Selected architectural styles and patterns}
 \subsection{Other design decisions}
