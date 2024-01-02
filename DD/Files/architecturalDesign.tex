@@ -59,12 +59,31 @@ Regarding the data layer, it is represented by the following component:
     \item \textbf{DBMS}: it is the component that handles the access to the database. It is responsible to store and retrieve the data from the database. It is the only component that can access the database.
 \end{itemize}
 \subsection{Deployment view}
+In this section is shown the deployment diagram of the system. The diagram is divided into three main tier: the presentation tier, the application tier and the data tier. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Diagrams/DeploymentDiagram.jpg}
     \caption{Deployment diagram}
     \label{fig:deployment_diagram}
 \end{figure}
+In figure Figure\ \ref{fig:deployment_diagram} is shown the deployment diagram of the system.
+Regarding the presentation tier, it is represented by the following components:
+\begin{itemize}
+    \item \textbf{Computer}: it is a normal computer used by the user. It is the device that the user uses to interact with the CKB WebApp. It has no particular requirements since it only needs a web browser to access the WebApp.
+    \item \textbf{Web Browser}: it is the software that the user uses to interact with the CKB WebApp. The CKB platform has to support the most common web browsers, such as Google Chrome, Mozilla Firefox, Microsoft Edge and Apple Safari.
+    \item \textbf{CKB WebApp}: it is the web application that the user interacts with and it is used within the web browser. It is responsible for the presentation of the data and the interaction with the user.
+    \item \textbf{Web Server}: it is a server that hosts a NGINX web server instance. The choice of NGINX is due to its high performance, low memory usage and high availability.
+\end{itemize}
+Regarding the application tier, it is represented by the following components:
+\begin{itemize}
+    \item \textbf{Application Server}: it is a server that hosts a CKB Backend application instance. It receives the requests from the Web Server and forwards it to the CKB Backend. At the same time it provides responses to the Web Server. It is also responsible to communicate with the DBMS to retrieve and store data.
+    \item \textbf{CKB Backend}: it is the backend application of the CKB Platform. It handle the entire business logic of the application. It is responsible to process the forwarded requests and to provide responses to the Application Server.
+\end{itemize}
+Regarding the data tier, it is represented by the following components:
+\begin{itemize}
+    \item \textbf{Database Server Cluster}: it is a cluster of servers that hosts a DBMS instance. The choice of a cluster is due to the fact that it provides high availability and scalability. It is also responsible to guarantee the security of the data. It process the database specific requests sent by the Application Server.
+    \item \textbf{DBMS}: it is the software that manages the database. It is responsible to store and retrieve the data from the database. It is the only component that can access the database.
+\end{itemize}
 \subsection{Component interfaces}
 \subsection{Runtime view}
 \subsection{Selected architectural styles and patterns}
