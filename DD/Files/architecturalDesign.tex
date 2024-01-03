@@ -160,7 +160,7 @@ Regarding the data tier, it is represented by the following components:
 \begin{itemize}
     \item \texttt{boolean saveModel(DataModel model);}
     \\ Save a DataModel in the database.
-    \item \texttt{DataModel getModel(int modelId);}
+    \item \texttt{DataModel getModel(DataModel model, List<Filter> filters);}
     \\ Get a DataModel from the database given its id.
     \item \texttt{boolean updateModel(DataModel model);}
     \\ Update a DataModel in the database.
