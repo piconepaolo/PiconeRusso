@@ -86,73 +86,96 @@ Regarding the data tier, it is represented by the following components:
 \end{itemize}
 \subsection{Component interfaces}
 
-% Define an interface for LoginManager
 \textbf{Interface} LoginManager:
 \begin{itemize}
     \item \texttt{Session login(String username, String password);}
     \item \texttt{void logout(Session session);}
 \end{itemize}
 
-% Define an interface for RegistrationManager
 \textbf{Interface} RegistrationManager:
 \begin{itemize}
     \item \texttt{boolean register(UserDetails userDetails);}
 \end{itemize}
 
-% Define an interface for AuthorizationManager
 \textbf{Interface} AuthorizationManager:
 \begin{itemize}
     \item \texttt{List<Role> getRoles(User user);}
+    \\ Get the roles of a user. The roles are used to determine if a user is authorized to perform a specific action.
 \end{itemize}
 
-% Define an interface for BattleManager
 \textbf{Interface} BattleManager:
 \begin{itemize}
     \item \texttt{Battle createBattle(BattleDetails details);}
+    \\ Create a new Battle. The BattleDetails contains all the information needed to create a new Battle.
     \item \texttt{boolean uploadFiles(Battle battle, CodeKata files);}
+    \\ Upload the files of the CodeKata. The files must contain the tests and the automation scripts of the CodeKata.
     \item \texttt{boolean updateBattle(Battle battle, BattleDetails details);}
+    Updates the details of a Battle, such as the different stages and the deadlines.
+    \item \texttt{List<Team> getTeams(Battle battle);}
 \end{itemize}
 
-% Define an interface for TournamentManager
 \textbf{Interface} TournamentManager:
 \begin{itemize}
     \item \texttt{Tournament createTournament(TournamentDetails details);}
+    \\ Create a new Tournament. The TournamentDetails contains all the information needed to create a new Tournament.
     \item \texttt{boolean updateTournament(Tournament tournament, TournamentDetails details);}
+    \\ Updates the details of a Tournament, such as the different stages and the deadlines.
 \end{itemize}
 
-% Define an interface for InvitationManager
 \textbf{Interface} InvitationManager:
 \begin{itemize}
     \item \texttt{boolean sendInvitation(User user, Invitation invitation);}
+    \\ Send an invitation to a user. The invitation can be to join a Tournament, if the user is an Educator, or to join a Team, if the user is a Student.
     \item \texttt{boolean acceptInvitation(Invitation invitation);}
+    \\ Accept an invitation sent by another user.
     \item \texttt{boolean declineInvitation(Invitation invitation);}
+    \\ Decline an invitation sent by another user.
 \end{itemize}
 
-% Define an interface for RankingManager
 \textbf{Interface} RankingManager:
 \begin{itemize}
-    \item \texttt{void updateRank(User user, int newRank);}
-    \item \texttt{int viewRank(User user);}
+    \item \texttt{void updateRank(Student student, Tournament tournament, int newRank);}
+    \\ Update the rank of a Student in a Tournament. This method can only be used by users with Educator Role.
+    \item \texttt{int viewRank(Student student, Tournament tournament);}
+    \\ View the rank of a Student in a Tournament.
 \end{itemize}
 
-% Define an interface for SubmissionManager
 \textbf{Interface} SubmissionManager:
 \begin{itemize}
     \item \texttt{SubmissionResult submit(Item item);}
+    \\ Submit a solution to a Battle. The Item contains the code of the solution. The SubmissionResult contains the evaluation of the submission.
     \item \texttt{Item getSubmission(int submissionId);}
+    \\ Get the code of a submission given its id.
+    \item \texttt{SubmissionResult getSubmissionResult(int submissionId);}
+    \\ Get the evaluation of a submission given its id.
 \end{itemize}
 
-% Define an interface for NotificationManager
 \textbf{Interface} NotificationManager:
 \begin{itemize}
     \item \texttt{void notify(User user, Notification notification);}
+    \\ Send a notification to a user.
 \end{itemize}
 
-% Define an interface for ModelManager
 \textbf{Interface} ModelManager:
 \begin{itemize}
     \item \texttt{boolean saveModel(DataModel model);}
+    \\ Save a DataModel in the database.
     \item \texttt{DataModel getModel(int modelId);}
+    \\ Get a DataModel from the database given its id.
+    \item \texttt{boolean updateModel(DataModel model);}
+    \\ Update a DataModel in the database.
+    \item \texttt{boolean deleteModel(DataModel model);}
+    \\ Delete a DataModel from the database.
+\end{itemize}
+
+\textbf{Interface} TeamManager:
+\begin{itemize}
+    \item \texttt{Team createTeam(TeamDetails details);}
+    \\ Create a new Team. The TeamDetails contains all the information needed to create a new Team.
+    \item \texttt{boolean updateTeam(Team team, TeamDetails details);}
+    \\ Updates the details of a Team, such as the name and the members.
+    \item \texttt{boolean addMember(Team team, Student student);}
+    \\ Add a Student to a Team.
 \end{itemize}
 \subsection{Runtime view}
 \subsection{Selected architectural styles and patterns}
