@@ -148,6 +148,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Get the code of a submission given its id.
     \item \texttt{SubmissionResult getSubmissionResult(int submissionId);}
     \\ Get the evaluation of a submission given its id.
+    \item \texttt{boolean updateSubmissionResult(SubmissionResult result);}
+    \\ Update the evaluation of a submission. Used when an Educator manually re-evaluates a submission.
 \end{itemize}
 
 \textbf{Interface} NotificationManager:
@@ -183,6 +185,38 @@ In this section are shown the sequence diagrams of the main functionalities of t
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Diagrams/LoginSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Close a Tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/CloseTournamentSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Upload of CodeKata}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UploadCodeKataSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Manual Score Update}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/ManualScoreUpdateSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Notification to a Student}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/NotificationToStudentSD.jpg}
     \caption{Runtime view}
     \label{fig:runtime_view}
 \end{figure}
