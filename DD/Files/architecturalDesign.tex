@@ -122,6 +122,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Updates the details of a Tournament, such as the different stages and the deadlines.
     \item \texttt{Tournament getTournament(int tournamentId);}
     \\ Get a Tournament given its id.
+    \item textttt{void addEducator(Tournament tournament, Educator educator);}
+    \\ Add an Educator to a Tournament.
 \end{itemize}
 
 \textbf{Interface} InvitationManager:
@@ -202,6 +204,13 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \includegraphics[width=\textwidth]{Diagrams/CreationBattleSD.jpg}
     \caption{Runtime view Creation of a battle}
     \label{fig:runtime_view_battle_creation}
+\end{figure}
+\subsubsection*{Invite other educators to a tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/InviteEducatorSD.jpg}
+    \caption{Runtime view Invite other educators to a tournament}
+    \label{fig:runtime_view_invite_educator}
 \end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
