@@ -6,7 +6,7 @@ The system is divided into three main layers: presentation layer, application la
     \caption{High level components and their interaction}
 \end{figure}
 
-The three-tier architecture was chosen for this type of system because of the several advantages it offers compared to other types of architectures. For that concerns scalability, it allows for easy scalability by separating the presentation, application, and data layers. Each layer can be scaled independently, allowing for better performance and resource utilization.
+The three-tier architecture was chosen for this type of system because of the several advantages it offers compared to other types of architectures. For what concerns scalability, it allows for easy scalability by separating the presentation, application, and data layers. Each layer can be scaled independently, allowing for better performance and resource utilization.
 For what concers modulatiry, it promotes the separation of concers by dividing the system into distinct layers. This makes it easier to develop, test, and maintain each layer separately, improving overall code quality and reusability. The sepatarion of concerns also improves the maintainability of the system by providing clear boundaries between layers it makes easier to understand and modify specific parts of the system without affecting other layers.
 The last advantage for which this architecture was chosen is flexibility. The three-tier provides flexibility in terms of technology choices. Each layer can be implemented using different technologies, allowing for the use of the most suitable tools and frameworks for each specific layer.
 
@@ -187,4 +187,17 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \label{fig:runtime_view}
 \end{figure}
 \subsection{Selected architectural styles and patterns}
+\subsubsection{Three-tier architecture}
+The three-tier architecture offers several key advantages of paramount importance for the CKB Platform:
+\begin{enumerate}
+    \item \textbf{Scalability}: by separating concerns into different layers, it becomes easier to scale each tier independently based on demand.
+    \item \textbf{Maintainability}: modifications in one tier can be implemented without impacting the other tiers, simplifying maintenance and updates.
+    \item \textbf{Flexibility}: Each tier can utilize the most suitable technologies, allowing for technological adaptability. For example: the presentation layer can adopt a frontend framework that best suits the needs of the application, while the application layer can adopt a backend framework that best suits the needs of the application.
+    \item \textbf{Security}: Layer separation enables specific security measures at each level, enhancing overall protection. In the Figure\ \ref{fig:high_level_system} is shown that the different tier are physically connected through firewalls. This is a very important feature of the system since it allows to guarantee the security of the data.
+    \item \textbf{Easier Testing and Debugging}: Individual layer testing and debugging lead to more efficient problem resolution. Different teams can work on different layers simultaneously, allowing for faster testing and debugging.
+    \item \textbf{Improved Performance}: Effective load balancing across layers results in better overall system performance.
+\end{enumerate}
+\subsubsection{Model View Controller (MVC) pattern}
+\subsubsection{Facade pattern}
+\subsubsection{Observer pattern}
 \subsection{Other design decisions}
