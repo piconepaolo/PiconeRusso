@@ -198,6 +198,25 @@ The three-tier architecture offers several key advantages of paramount importanc
     \item \textbf{Improved Performance}: Effective load balancing across layers results in better overall system performance.
 \end{enumerate}
 \subsubsection{Model View Controller (MVC) pattern}
+The Model-View-Controller (MVC) pattern is a software design paradigm that organizes an application into three interconnected components:
+
+\begin{itemize}
+    \item \textbf{Model:} Manages the data and business logic of the application.
+    \item \textbf{View:} Responsible for the display and user interface.
+    \item \textbf{Controller:} Acts as an intermediary between the Model and View, processing user input and responding to user interactions.
+\end{itemize}
+The MVC pattern is a good fit for the CKB Platform because as discussed above the platform is decomposed into three layer. In particular: the \textit{Model} is represented by the DBMS Component, the \textit{View} is represented by the WebApp Component and the WebServer subsystem. Finally the \textit{Controller} is represented by the Application Server Subsystem which implement several components such as the Login Manager, the Registration Manager, the Authorization Manager, the Evaluation Manager, the Ranking Manager, the Team Manager, the Submission Manager, the Invitation Manager, the Notification Manager, the Battle Manager and the Tournament Manager that are responsible to handle the data, process following the business logic and pass it to the \textit{View}. \\
+Some of the benefits apported by the MVC to the CKB Platform are:
+
+\begin{enumerate}
+    \item \textbf{Modularity:} Separation of concerns allows for independent development, maintenance, and testing of each component.
+    \item \textbf{Reusability:} Facilitates the reuse of components, especially the business logic encapsulated in the Model.
+    \item \textbf{Scalability:} Makes scaling and updating the application more manageable as it grows in complexity.
+    \item \textbf{Flexibility:} Each component can evolve independently, accommodating new technologies or changes in business requirements.
+    \item \textbf{Improved Organization:} Enhances code readability and maintainability due to its structured organization.
+    \item \textbf{Simplified Collaboration:} Enables different development teams to work on each component without overlap, improving collaborative efforts.
+\end{enumerate}
+
 \subsubsection{Facade pattern}
 \subsubsection{Observer pattern}
 \subsection{Other design decisions}
