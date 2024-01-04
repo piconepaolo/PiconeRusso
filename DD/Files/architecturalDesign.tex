@@ -120,6 +120,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Create a new Tournament. The TournamentDetails contains all the information needed to create a new Tournament.
     \item \texttt{boolean updateTournament(Tournament tournament, TournamentDetails details);}
     \\ Updates the details of a Tournament, such as the different stages and the deadlines.
+    \item \texttt{Tournament getTournament(int tournamentId);}
+    \\ Get a Tournament given its id.
 \end{itemize}
 
 \textbf{Interface} InvitationManager:
@@ -192,6 +194,14 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \includegraphics[width=\textwidth]{Diagrams/CreationTournamentSD.jpg}
     \caption{Runtime view Creation of a tournament}
     \label{fig:runtime_view_tournament_creation}
+\end{figure}
+
+\subsubsection*{Creation of a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/CreationBattleSD.jpg}
+    \caption{Runtime view Creation of a battle}
+    \label{fig:runtime_view_battle_creation}
 \end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
