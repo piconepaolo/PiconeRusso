@@ -1,8 +1,27 @@
 \subsection{Overview}
 This section is dedicated to the implementation, integration and test plan. The first part of this section will be dedicated to the identification of the main features of the system and the definition of the components that will be used to implement them. The second part will be dedicated to the integration and testing of the components. The third part will be dedicated to the system testing. The last part will be dedicated to the additional specifications on testing.
-\subsection{Implementation plan}
-Regarding the implementation plan, the bottom-up approach is a good choice for the implementation of the system.
-
+\subsubsection{Features identification}
+The following list describes the main features of the system and the components that will be used to implement them:
+\begin{itemize}
+    \item \textbf{User registration and login}: this feature will be implemented by the WebApp and by two componenets that belongs to the Application Server: the RegistrationManager and the LoginManager. The WebApp will provide the user interface for the registration and login process. The RegistrationManager will provide the logic for the registration while the LoginManager will take care of the login process.
+    \item \textbf{Creation of a Tournament}: this feature is an educator only feature. It will be implemented by the WebApp to insert the details and restrictions about the tournament, by the AuthorizationManager in order to check if the user is an educator and finally by the TournamentManager. The WebApp will provide the user interface for the creation of a tournament. The TournamentManager will provide the logic for the creation of a tournament.
+    \item \textbf{Creation of a Battle}: this feature is an educator only feature. It will be implemented by the WebApp to insert the details and restrictions about the battle, by the AuthorizationManager in order to check if the user is an educator, by the BattleManager and its subcomponent: the CodeKataManager. Finally, since every battle must have their own GitHub repository the BattleManager will also handle the communication with the external system GitHub in order to create the repository for the battle. The WebApp will provide the user interface for the creation of a battle. The CodeKataManager will take care of the creation of the Code Kata while the BattleManager will provide the logic for the creation of a battle.
+    \item \textbf{Manage Team}: this feature is a student only feature. It will be implemented by the WebApp to provide the name of the team and also to select the student to invite to the team. The AuthorizationManager will check if the user is a student, the TeamManager will provide the logic for the creation of a team. The BattleManager will be used to associate the newly created team with the battle of interest. The WebApp will provide the user interface for the creation of a team. Additionally the invitiation to join a team is handled by the InvitationManager.
+    \item \textbf{Automatic Evaluation}: this feature is one of the most important features of the system. The implementation of this feature will be achieved by the use of the SubmissionManager, EvaluationMaanger and GitHub. The SubmissionManager will take care of the submission done by the Team on the forked GitHub repository of the battle. The EvaluationManager is responsible for the running of the automatic evaluation on the submitted code. The automatic evaluation starts when the GitHub action set up by the Team is triggered by a push on the forked repository. When the GitHub action is triggered it will call an API endpoint that will start the evaluation process. Finally, there is the RankingMaanger that will take care of the ranking of the students for the battle.
+    \item \textbf{Manual Evaluation}: this feature is an educator only feature. It will be implemented by the WebApp to provide the educator with the possibility to manually update the score of an evaluation. The AuthorizationManager will check if the user is an educator. The EvaluationManager is the component that will be used to update the score of an evaluation. Finally, there is the RankingMaanger that will take care of the update of the ranking of the students for the battle.
+    \item \textbf{Educator Invitation}: this feature is an educator only feature. It will be implemented by the WebApp to provide the educator with the possibility to invite other educators to join a tournament. The AuthorizationManager will check if the user is an educator. The InvitationManager will take care of the invitation process. Finally the TorunamentManager will be used to associate the invited educator with the tournament if the invitation is accepted.
+    \item \textbf{Notification of the user}: the notification feature is trasversal to multiple features. These features are: the creation of a tournament, the creation of a battle, the invitation to join a team, the invitation to join a tournament. The NotificationManager will be used to send the notification to the user. The WebApp will provide the user interface to view the notifications.
+\end{itemize}
+\subsubsection{Implementation, Integration and Test Plan}
+The system is composed by the following subsystems:
+\begin{itemize}
+    \item \textbf{WebApp}
+    \item \textbf{WebServer}
+    \item \textbf{Application Server}
+    \item \textbf{DBMS}
+    \item \textbf{External Services}: GitHub
+\end{itemize}
+These subsystems are developed, tested, and integrated using a bottom-up approach.
 The bottom-up strategy begins at the granular level, focusing on the creation and development of individual components or modules. Each of these elements is designed and developed in isolation, allowing for a deep focus on functionality and performance. This approach ensures that every component is robust and fully operational before it becomes part of a larger system. 
 
 Once these individual modules are developed, they undergo rigorous testing to identify and rectify any issues early in the development cycle. This early detection of problems is a key advantage, as it significantly reduces the complexity and cost of fixes later on. 
@@ -10,7 +29,10 @@ Once these individual modules are developed, they undergo rigorous testing to id
 After ensuring the reliability of each component, the process moves to the integration phase. Here, these independently developed modules are gradually assembled to form larger subsystems. This step-by-step assembly allows for careful monitoring of interactions between components, ensuring overall system coherence and performance.
 
 Finally, these subsystems are integrated to complete the overall system or project. This incremental approach not only facilitates detailed scrutiny at each stage but also allows for parallel development of components, accelerating the overall timeline. Additionally, it provides flexibility in adapting to changes or incorporating new technologies as development progresses. 
-\subsubsection{Feature identification}
-\subsubsection{Component Integration and Testing}
+
+ This method emphasizes the significance of various functionalities while aiming to deliver a tangible application feature at each stage of the plan. For each subsystem, we will focus on the implementation, integration, and testing of its constituent components.
+
+It's important to note that components belonging to external systems are not subject to implementation and testing within our plan. These external components are assumed to be reliable and are treated as such.
+
 \subsection{System testing}
 \subsection{Additional specifications on testing}
