@@ -189,6 +189,7 @@ This section specifies all the requirements that the system must satisfy in orde
     Entry condition &
     \begin{itemize}
         \item The Educator is subscribed to CKB platform
+        \item The Educator is logged in 
         \item The Educator created a tournament
         \item The registration deadline of the tournament is passed
         \item The tournament is not closed
@@ -403,14 +404,14 @@ This section specifies all the requirements that the system must satisfy in orde
         Entry condition &
         \begin{itemize}
             \item The Student is subscribed to CKB platform
+            \item The Student is logged in
             \item The Student is subscribed to the tournament in which the battle is
             \item The Student is not subscribed to the battle
         \end{itemize}
         \\
         \hline
         Event flow &
-        \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
+        \begin{enumerate}[label=\arabic*.]      
             \item The Student goes to the tournament page
             \item The Student selects the battle in which he wants to subscribe
             \item The Student clicks on the `Subscribe' button
@@ -464,6 +465,7 @@ This section specifies all the requirements that the system must satisfy in orde
         Entry condition &
         \begin{itemize}
             \item The Student is subscribed to CKB platform
+            \item The Student is logged in
             \item The Student is subscribed to the tournament in which the battle is
             \item The Student is subscribed to the battle
             \item The Student is not in a team for the battle
@@ -471,7 +473,6 @@ This section specifies all the requirements that the system must satisfy in orde
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
             \item The Student goes to the tournament page
             \item The Student selects the battle in which he wants to create a team
             \item The Student clicks on the `Create Team' button
@@ -523,13 +524,13 @@ This section specifies all the requirements that the system must satisfy in orde
         Entry condition &
         \begin{itemize}
             \item The Student is subscribed to CKB platform
+            \item The Student is logged in
             \item The Student is subscribed to the tournament in which the battle is
             \item The Student is subscribed to the battle
         \end{itemize} \\
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
             \item The Student goes to the tournament page
             \item The Student selects the battle in which he wants to fork the repository
             \item The Student clicks on the `Repository' button

@@ -112,6 +112,8 @@ Regarding the data tier, it is represented by the following components:
     \item \texttt{boolean updateBattle(Battle battle, BattleDetails details);}
     Updates the details of a Battle, such as the different stages and the deadlines.
     \item \texttt{List<Team> getTeams(Battle battle);}
+    \item \texttt{boolean subscribe(Battle battle, Student student);}
+    \\ Subscribe a Student to a Battle.
 \end{itemize}
 
 \textbf{Interface} TournamentManager:
@@ -179,8 +181,10 @@ Regarding the data tier, it is represented by the following components:
     \item \texttt{boolean addMember(Team team, Student student);}
     \\ Add a Student to a Team.
 \end{itemize}
+
 \subsection{Runtime view}
 In this section are shown the sequence diagrams of the main functionalities of the system previously described in the RASD document. Starting from the \textit{Component View} section of this document, it is possible to identify the components interactions that are shown in the following sequence diagrams.
+
 \subsubsection*{Login}
 \begin{figure}[H]
     \centering
@@ -222,3 +226,27 @@ In this section are shown the sequence diagrams of the main functionalities of t
 \end{figure}
 \subsection{Selected architectural styles and patterns}
 \subsection{Other design decisions}
+
+\subsubsection*{Subscribe to a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/SubscribeBattleSD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Fork repository of a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/ForkRepositorySD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Creation of a Team for a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/CreationTeamSD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}
