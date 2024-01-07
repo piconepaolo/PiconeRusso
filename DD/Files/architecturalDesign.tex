@@ -153,8 +153,8 @@ Regarding the data tier, it is represented by the following components:
 
 \textbf{Interface} SubmissionManager:
 \begin{itemize}
-    \item \texttt{SubmissionResult submit(Item item);}
-    \\ Submit a solution to a Battle. The Item contains the code of the solution. The SubmissionResult contains the evaluation of the submission.
+    \item \texttt{Submission submit(Item item);}
+    \\ Submit a solution to a Battle. The Item contains the code of the solution.
     \item \texttt{Item getSubmission(int submissionId);}
     \\ Get the code of a submission given its id.
     \item \texttt{SubmissionResult getSubmissionResult(int submissionId);}
@@ -163,14 +163,14 @@ Regarding the data tier, it is represented by the following components:
     \\ Get the Battle associated to a submission given its id.
     \item \texttt{Team getTeamAssociated(int SubmissionID);}
     \\ Get the Team associated to a submission given its id.
+    \item \texttt{Score updateScore(int SubmissionID);}
+    \\ Update the score of a submission.
 \end{itemize}
 
 \textbf{Interface} EvaluationManager:
 \begin{itemize}
     \item \texttt{int startAutomaticEvaluation(Submission submission);}
-    \\ Start the automatic evaluation of a submission. This method is called by the GitHub Action when a new submission is pushed to the repository.
-    \item \texttt{Score updateScore(Submission submission);}
-    \\ Update the score of a submission.
+    \\ Start the automatic evaluation of a submission.
 \end{itemize}
 
 \textbf{Interface} NotificationManager:
