@@ -1,0 +1,253 @@
+In this section we will describe the requirements traceability. The requirements traceability is a way to trace the requirements to the design elements. This is done to ensure that all the requirements are met and that the design elements are correct. The requirements traceability is done by using a traceability matrix. The traceability matrix is a table that shows the relationship between the requirements and design elements. \\
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R1] The system shall allow the user to register to the system \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item RegistrationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R2] The system shall allow the user to login to the system \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item LoginManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R3] The system shall allow the educator to create a new tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TournamentManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R4] The system should allow the educator to create a new battle for a tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TournamentManager
+        \item BattleManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R5] The system shall allow the educator to set restriction for a battle \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item BattleManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R6] The system shall allow the educator to upload the CodeKata for a battle \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item BattleManager
+        \item CodeKataManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R7] The system shall allow the student to subscribe to a tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TournamentManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R8] The system shall allow the student to subscribe to a battle \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item BattleMaanger
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R9] The system shall create a reposistory for each battle such that is forkable by the students \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item BattleManager
+        \item GitHub
+        \item CodeKataManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R10] The system shall allow the students to create a team for a battle \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TeamManager
+        \item BattleManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R11] The system should allow the students to invite other students to join a team \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TeamManager
+        \item InvitationManager
+        \item BattleManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R12] The system should notify students subscribed to the platform when a new tournament is created \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item NotificationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R13] The system should notify students subscribed to a tournament when a new battle is created \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item NotificationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R14] The system should notify students subscribed to a tournament when the system puslishes the ranking of the tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item NotificationManager
+        \item RankingManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R15] The system shall guarantee that the restrictions for a battle set by the educator are respected \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item BattleManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R16] The system shall allow the educator that created a tournament to invite other educators to the tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TournamentManager
+        \item InvitationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R17] The system shall allow the educator to close a tournament \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item AuthorizationManager
+        \item TournamentManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R18] The system should allow the educator to manually update the score of a team for a battle \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item SubmissionManager
+        \item AuthorizationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|p{3cm}|p{10cm}|}
+    \hline
+    Requirements & [R19] The system should allow GitHub to trigger the automatic evaluation of a submission \\
+    \hline
+    Components & 
+    \begin{itemize}
+        \item SubmissionManager
+        \item EvaluationManager
+        \item GitHub
+        \item AuthorizationManager
+    \end{itemize} 
+    \\
+    \hline
+\end{tabular}
