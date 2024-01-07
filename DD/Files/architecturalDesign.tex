@@ -110,8 +110,11 @@ Regarding the data tier, it is represented by the following components:
     \item \texttt{boolean uploadFiles(Battle battle, CodeKata files);}
     \\ Upload the files of the CodeKata. The files must contain the tests and the automation scripts of the CodeKata.
     \item \texttt{boolean updateBattle(Battle battle, BattleDetails details);}
-    Updates the details of a Battle, such as the different stages and the deadlines.
+    \\ Updates the details of a Battle, such as the different stages and the deadlines.
     \item \texttt{List<Team> getTeams(Battle battle);}
+    \\ Get the teams of a Battle.
+    \item \texttt{Battle getBattle(int battleId);}
+    \\ Get a Battle given its id.
 \end{itemize}
 
 \textbf{Interface} TournamentManager:
@@ -130,7 +133,7 @@ Regarding the data tier, it is represented by the following components:
 \begin{itemize}
     \item \texttt{List<Invitation> getInvitation(User user);}
     \\ Get the invitations of a user.
-    \item \texttt{boolean sendInvitation(User user, Invitation invitation);}
+    \item \texttt{boolean sendInvitation(User user, Tournament | Team);}
     \\ Send an invitation to a user. The invitation can be to join a Tournament, if the user is an Educator, or to join a Team, if the user is a Student.
     \item \texttt{boolean acceptInvitation(Invitation invitation);}
     \\ Accept an invitation sent by another user.
@@ -182,6 +185,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Updates the details of a Team, such as the name and the members.
     \item \texttt{boolean addMember(Team team, Student student);}
     \\ Add a Student to a Team.
+    \item \texttt{Team getTeam(int teamId);}
+    \\ Get a Team given its id.
 \end{itemize}
 \subsection{Runtime view}
 In this section are shown the sequence diagrams of the main functionalities of the system previously described in the RASD document. Starting from the \textit{Component View} section of this document, it is possible to identify the components interactions that are shown in the following sequence diagrams.
@@ -228,6 +233,13 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \includegraphics[width=\textwidth]{Diagrams/AcceptInvitationSD.jpg}
     \caption{Runtime view Accept invitation to a team for a battle}
     \label{fig:runtime_view_accept_invitation}
+\end{figure}
+\subsubsection*{Invite other students to a team}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/InviteStudentSD.jpg}
+    \caption{Runtime view Invite other students to a team}
+    \label{fig:runtime_view_invite_student}
 \end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
