@@ -128,6 +128,8 @@ Regarding the data tier, it is represented by the following components:
 
 \textbf{Interface} InvitationManager:
 \begin{itemize}
+    \item \texttt{List<Invitation> getInvitation(User user);}
+    \\ Get the invitations of a user.
     \item \texttt{boolean sendInvitation(User user, Invitation invitation);}
     \\ Send an invitation to a user. The invitation can be to join a Tournament, if the user is an Educator, or to join a Team, if the user is a Student.
     \item \texttt{boolean acceptInvitation(Invitation invitation);}
@@ -218,6 +220,14 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \includegraphics[width=\textwidth]{Diagrams/SubscribeTournamentSD.jpg}
     \caption{Runtime view Subscribe to a tournament}
     \label{fig:runtime_view_subscribe_tournament}
+\end{figure}
+
+\subsubsection*{Accept invitation to a team for a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/AcceptInvitationSD.jpg}
+    \caption{Runtime view Accept invitation to a team for a battle}
+    \label{fig:runtime_view_accept_invitation}
 \end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
