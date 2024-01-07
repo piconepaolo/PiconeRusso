@@ -53,12 +53,12 @@ The main components of the Notification service are the DBMS, the NotificationMa
     \caption{Notification service}
     \label{fig:notification}
 \end{figure}
-
+\clearpage
 \subsubsection*{Authorization service}
 Regarding the Authorization service, the main component is the AuthorizationManager that depends on the TeamManager, the TournamentManager, the BattleManager, the InvitationManager and the EvaluationManager.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Diagrams/AuthorizationIntegrationPlan.jpg}
+    \includegraphics[width=0.6\textwidth]{Diagrams/AuthorizationIntegrationPlan.jpg}
     \caption{Authorization service}
     \label{fig:authorization}
 \end{figure}
@@ -68,7 +68,7 @@ The Dispatcher service is composed by the APIGateway, in order to dispatch the r
 Since the APIGateway dispatches the requests to the correct component, its development and integration can be done using a thread approach. With this approach the functionalities of the APIGateway can be implemented and tested in parallel with the development of the other components.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Diagrams/DispatcherIntegrationPlan.jpg}
+    \includegraphics[width=0.6\textwidth]{Diagrams/DispatcherIntegrationPlan.jpg}
     \caption{Dispatcher service}
     \label{fig:dispatcher}
 \end{figure}
