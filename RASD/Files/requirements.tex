@@ -162,12 +162,12 @@ This section specifies all the requirements that the system must satisfy in orde
         \begin{itemize}
             \item The Educator is subscribed to CKB platform
             \item The Student is subscribed to CKB platform
+            \item The Educator is logged in
         \end{itemize}
         \\
         \hline
         Event flow & 
         \begin{enumerate}[label=\arabic*.]
-            \item The Educator logs in to the system
             \item The Educator clicks on the `Create Tournament button
             \item The Educator fills the form with the information about the tournament, the registration deadline and the starting date
             \item The Educator clicks on the `Create button
@@ -223,12 +223,12 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The Student is subscribed to CKB platform
             \item The Educator created a tournament
             \item The Student is subscribed to the tournament
+            \item The Educator is logged in
         \end{itemize}
         \\
         \hline
         Event flow & 
         \begin{enumerate}[label=\arabic*.]
-            \item The Educator logs in to the system
             \item The Educator goes to the tournament page in which he wants to create a battle for
             \item The Educator clicks on the `Create Battle button
             \item The Educator fills the form with the registration deadline, submission deadline, minimum number of students per team, maximum number of students per team
@@ -319,12 +319,12 @@ This section specifies all the requirements that the system must satisfy in orde
         \begin{itemize}
             \item The Educator is subscribed to CKB platform
             \item The Educator created a tournament
+            \item The Educator is logged in
         \end{itemize}
         \\
         \hline
         Event flow & 
         \begin{enumerate}[label=\arabic*.]
-            \item The Educator logs in to the system
             \item The Educator goes to the tournament page in which he wants to invite other educators
             \item The Educator clicks on the `Invite Educator' button
             \item The Educator fills the form with the email of the educator to invite
@@ -377,12 +377,12 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The Student is subscribed to CKB platform
             \item The Educator created a tournament
             \item The Student is not subscribed to the tournament
+            \item The Student is logged in
         \end{itemize}
         \\
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
             \item The Student goes to the tournament page in which he wants to subscribe
             \item The Student clicks on the `Subscribe' button
         \end{enumerate} \\
@@ -434,12 +434,13 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The Student is subscribed to the tournament in which the battle is
             \item The Student is subscribed to the battle
             \item The Student is not in a team for the battle
+            \item The Student is logged in
+            \item The Student has been invited to a team for the battle
         \end{itemize} \\
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
-            \item The Student goes to the notification page
+            \item The Student goes to the invitation page
             \item The Student clicks on the `Accept Invitation' button
             \item The system adds the student to the team for the battle
         \end{enumerate} \\
@@ -496,13 +497,14 @@ This section specifies all the requirements that the system must satisfy in orde
             \item The Student is subscribed to CKB platform
             \item The Student is subscribed to the tournament in which the battle is
             \item The Student is subscribed to the battle
+            \item The Student is logged in
         \end{itemize} \\
         \hline
         Event flow &
         \begin{enumerate}[label=\arabic*.]
-            \item The Student logs in to the system
             \item The Student goes to the tournament page
             \item The Student selects the battle in which he wants to invite other students
+            \item The Student selects the team in which he wants to invite other students
             \item The Student clicks on the `Invite people' button
             \item The Student fills the form with the email of the students to invite
             \item The Student clicks on the `Invite' button
