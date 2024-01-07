@@ -115,6 +115,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Get the teams of a Battle.
     \item \texttt{Battle getBattle(int battleId);}
     \\ Get a Battle given its id.
+    \item \texttt{Tournament getTournamentAssociated(int battleId);}
+    \\ Get the Tournament associated to a Battle given its id.
 \end{itemize}
 
 \textbf{Interface} TournamentManager:
@@ -157,6 +159,18 @@ Regarding the data tier, it is represented by the following components:
     \\ Get the code of a submission given its id.
     \item \texttt{SubmissionResult getSubmissionResult(int submissionId);}
     \\ Get the evaluation of a submission given its id.
+    \item \texttt{Battle getBattleAssociated(int SubmissionID);}
+    \\ Get the Battle associated to a submission given its id.
+    \item \texttt{Team getTeamAssociated(int SubmissionID);}
+    \\ Get the Team associated to a submission given its id.
+\end{itemize}
+
+\textbf{Interface} EvaluationManager:
+\begin{itemize}
+    \item \texttt{int startAutomaticEvaluation(Submission submission);}
+    \\ Start the automatic evaluation of a submission. This method is called by the GitHub Action when a new submission is pushed to the repository.
+    \item \texttt{Score updateScore(Submission submission);}
+    \\ Update the score of a submission.
 \end{itemize}
 
 \textbf{Interface} NotificationManager:
@@ -187,6 +201,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Add a Student to a Team.
     \item \texttt{Team getTeam(int teamId);}
     \\ Get a Team given its id.
+    \item \texttt{List<Student> getMembers(Team team);}
+    \\ Get the members of a Team.
 \end{itemize}
 \subsection{Runtime view}
 In this section are shown the sequence diagrams of the main functionalities of the system previously described in the RASD document. Starting from the \textit{Component View} section of this document, it is possible to identify the components interactions that are shown in the following sequence diagrams.
@@ -240,6 +256,14 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \includegraphics[width=\textwidth]{Diagrams/InviteStudentSD.jpg}
     \caption{Runtime view Invite other students to a team}
     \label{fig:runtime_view_invite_student}
+\end{figure}
+
+\subsubsection*{Submit a solution to a battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/SolutionSubmissionSD.jpg}
+    \caption{Runtime view Submit a solution to a battle}
+    \label{fig:runtime_view_submit_solution}
 \end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
