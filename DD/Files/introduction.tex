@@ -9,7 +9,7 @@ By offering a platform specifically designed for programming practice, CodeKataB
 Overall, the motivations behind the existence of the CodeKataBattle platform are to create a dedicated space for programming practice, foster healthy competition among students, and provide a means for tracking and improving programming skills.
 
 \subsection{Scope}
-...
+As mentioned above in the purpose section, the CodeKataBattle platform aims to provide students with a dedicated space for programming practice. The architectural style of the platform will be a three-tier architecture. The web interface is part of the first layer of the three-tier architecture. The three-tier architecture is a client-server software architecture pattern that separates the user interface, application processing, and data management functions into separate modules. The students and the educators will interact with the presentation layer, in particular with the Web App. Part of the presentation layer is also the Web Server that will handle the HTTP requests and responses. The second layer is the application layer, represented by the Application Server, which is responsible for the business logic of the application. The third layer is the data layer, represented by the Database Server, which is responsible for storing and retrieving data.
 
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
@@ -32,12 +32,7 @@ Overall, the motivations behind the existence of the CodeKataBattle platform are
 \end{itemize}
 \subsubsection{Abbreviations}
 \begin{itemize}
-    \item \textbf{WP}: World Phenomena
-    \item \textbf{SP}: Shared Phenomena
-    \item \textbf{G}: Goal
     \item \textbf{R}: Requirement
-    \item \textbf{UC}: Use Case
-    \item \textbf{UI}: User Interface
     \item \textbf{API}: Application Programming Interface
 \end{itemize}
 \subsection{Revision history}
@@ -45,17 +40,17 @@ Overall, the motivations behind the existence of the CodeKataBattle platform are
 \subsection{Reference documents}
 This document is based on:
 \begin{itemize}
-    \item The specification of the RASD assignment of the Software Engineering 2 course
+    \item The specification of the DD assignment of the Software Engineering 2 course
     \item The slides of the Software Engineering 2 course
 \end{itemize}
 
-\subsection{Document structure}
+
+\subsection{Overview}
 This document is structured as follows:
 \begin{itemize}
-    \item \textbf{Introduction}: it provides a general description of the product, its purpose and the goals that the project aims to achieve. It also contains the scope of the product, the phenomena that the product will interact with and the shared phenomena between the product and the world. Finally, it contains the definitions, acronyms and abbreviations used in the document.
-    \item \textbf{Overall Description}: it's a high level description of the product. It contains the product perspective, the product functions, the user characteristics, the constraints, the assumptions and the dependencies of the product.
-    \item \textbf{Specific Requirements}: it contains the functional and non-functional requirements of the product. It also contains the use cases, the sequence diagrams of the most important use cases and the external interfaces.
-    \item \textbf{Formal Analysis}: it contains the Alloy model of the product.
-    \item \textbf{Effort Spent}: it contains the number of hours spent by each member of the group to redact this document.
-    \item \textbf{References}: it contains the list of the documents used to redact this document.
+    \item \textbf{Introduction}: this section provides a general overview over the product and the decision made about the adoption of some architecturel styles. It also contains the definitions, acronyms and abbreviations used in the document.
+    \item \textbf{Architectual design}: this section contains the description of the architectural design of the system. It includes the high level diagram of the components and how they interact with each other. It also contains the description of the components and the interfaces they expose. A section of this chapter is dedicated to the deployment diagram of the system. Finally, this chapter contains the description of the runtime view of the system, which includes the sequence diagrams of the main functionalities of the system.
+    \item \textbf{User Interface Design}: this section contains the mockups of the user interface of the system. It has the same assets as the RASD document.
+    \item \textbf{Requirements Traceability}: this section contains the mapping between the requirements defined in the RASD document and the components of the system defined in the component diagram.
+    \item \textbf{Implementation, Integration and Test Plan}: this section contains the description of the strategy adopted to implement and integrate the components of the system. It also contains the description of the testing strategy adopted.
 \end{itemize}

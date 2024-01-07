@@ -173,13 +173,6 @@ Regarding the data tier, it is represented by the following components:
     \\ Start the automatic evaluation of a submission.
 \end{itemize}
 
-\textbf{Interface} EvaluationManager:
-\begin{itemize}
-    \item \texttt{boolean startAutomaticEvaluation(Submission submission);}
-    \\ Start the automatic evaluation of a submission. This method is called by the GitHub Action when a new submission is pushed to the repository.
-    \item \texttt{Score updateScore(Submission submission);}
-    \\ Update the score of a submission.
-
 \textbf{Interface} NotificationManager:
 \begin{itemize}
     \item \texttt{void notify(User user, Notification notification);}
