@@ -62,7 +62,7 @@ Regarding the Authorization service, the main component is the AuthorizationMana
     \caption{Authorization service}
     \label{fig:authorization}
 \end{figure}
-
+\clearpage
 \subsubsection*{Dispatcher service}
 The Dispatcher service is composed by the APIGateway, in order to dispatch the requests to the correct component it needs the AuthorizationManager, LoginManager, RegistrationManager and the RankingManager.
 Since the APIGateway dispatches the requests to the correct component, its development and integration can be done using a thread approach. With this approach the functionalities of the APIGateway can be implemented and tested in parallel with the development of the other components.
@@ -72,7 +72,7 @@ Since the APIGateway dispatches the requests to the correct component, its devel
     \caption{Dispatcher service}
     \label{fig:dispatcher}
 \end{figure}
-
+\clearpage
 \subsubsection*{System integration}
 The system integration is the last step of the implementation and the integration. The system integration is composed by the integration of the WebApp, WebServer, Application Server and the DBMS. The WebApp depends on the WebServer, the WebServer depends on the Application Server and the Application Server depends on the DBMS. Finally for the external services we have GitHub that depends on the Application Server.
 \begin{figure}[H]
