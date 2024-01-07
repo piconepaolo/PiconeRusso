@@ -117,6 +117,8 @@ Regarding the data tier, it is represented by the following components:
     \\ Get a Battle given its id.
     \item \texttt{Tournament getTournamentAssociated(int battleId);}
     \\ Get the Tournament associated to a Battle given its id.
+    \item \texttt{boolean subscribe(Battle battle, Student student);}
+    \\ Subscribe a Student to a Battle.
 \end{itemize}
 
 \textbf{Interface} TournamentManager:
@@ -171,6 +173,14 @@ Regarding the data tier, it is represented by the following components:
 \begin{itemize}
     \item \texttt{int startAutomaticEvaluation(Submission submission);}
     \\ Start the automatic evaluation of a submission.
+    \item \texttt{boolean updateSubmissionResult(SubmissionResult result);}
+    \\ Update the evaluation of a submission. Used when an Educator manually re-evaluates a submission.
+\end{itemize}
+
+\textbf{Interface} EvaluationManager:
+\begin{itemize}
+    \item \texttt{boolean startAutomaticEvaluation(Submission submission);}
+    \\ Start the automatic evaluation of a submission. This method is called by the GitHub Action when a new submission is pushed to the repository.
 \end{itemize}
 
 \textbf{Interface} NotificationManager:
@@ -204,8 +214,10 @@ Regarding the data tier, it is represented by the following components:
     \item \texttt{List<Student> getMembers(Team team);}
     \\ Get the members of a Team.
 \end{itemize}
+
 \subsection{Runtime view}
 In this section are shown the sequence diagrams of the main functionalities of the system previously described in the RASD document. Starting from the \textit{Component View} section of this document, it is possible to identify the components interactions that are shown in the following sequence diagrams.
+
 \subsubsection*{Login}
 \begin{figure}[H]
     \centering
@@ -265,6 +277,38 @@ In this section are shown the sequence diagrams of the main functionalities of t
     \caption{Runtime view Submit a solution and Automatic evaluation}
     \label{fig:runtime_view_submit_solution}
 \end{figure}
+
+\subsubsection*{Close a Tournament}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/CloseTournamentSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Upload of CodeKata}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/UploadCodeKataSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Manual Score Update}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/ManualScoreUpdateSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Notification to a Student}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/NotificationToStudentSD.jpg}
+    \caption{Runtime view}
+    \label{fig:runtime_view}
+\end{figure}
 \clearpage
 \subsection{Selected architectural styles and patterns}
 \subsubsection{Three-tier architecture}
@@ -303,7 +347,30 @@ This patterns comes handy in the CKB platform system because it allows the web s
 \subsubsection{Observer pattern}
 The Observer pattern is a behavioral design pattern that allows an object, called the subject, to notify other objects, called observers, when its state changes. The Observer pattern provides a way to subscribe and unsubscribe to and from these events for any object that implements a subscriber interface. In the context of CKB platform, it is used to notify the users when a new notification is available. The \textit{Notification Manager} is the subject and the \textit{WebApp} is the observer. The \textit{WebApp} subscribes to the \textit{Notification Manager} and it is notified when a new notification is available. Also another use case of this pattern is when \textit{GitHub} is the subject and the \textit{Evaluation Manager} is the observer. In this case the \textit{Evaluation Manager} subscribes to GitHub and it is notified when a new submission is available.
 \subsection{Other design decisions}
-In this section are shown other design decisions that were taken during the design phase of the system.
+
+\subsubsection*{Subscribe to a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/SubscribeBattleSD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Fork repository of a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/ForkRepositorySD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}
+
+\subsubsection*{Creation of a Team for a Battle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/CreationTeamSD.jpg}
+    \caption{Runtime view}
+\label{fig:runtime_view}
+\end{figure}In this section are shown other design decisions that were taken during the design phase of the system.
 \subsubsection{Document-oriented database}
 The CKB Platform data architecture does not require complex relationships between data entities. The data is stored in a hierarchical format, which is well-suited for document-oriented databases. The data is stored in JSON format, which is useful when passing data to a fronted framework based Webapp as in the case of CKB Platform. Moreover the use of a document-oriented database provides several benefits:
 \begin{itemize}
