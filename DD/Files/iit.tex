@@ -53,32 +53,48 @@ The main components of the Notification service are the DBMS, the NotificationMa
     \caption{Notification service}
     \label{fig:notification}
 \end{figure}
-
+\clearpage
 \subsubsection*{Authorization service}
 Regarding the Authorization service, the main component is the AuthorizationManager that depends on the TeamManager, the TournamentManager, the BattleManager, the InvitationManager and the EvaluationManager.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Diagrams/AuthorizationIntegrationPlan.jpg}
+    \includegraphics[width=0.6\textwidth]{Diagrams/AuthorizationIntegrationPlan.jpg}
     \caption{Authorization service}
     \label{fig:authorization}
 \end{figure}
 
 \subsubsection*{Dispatcher service}
 The Dispatcher service is composed by the APIGateway, in order to dispatch the requests to the correct component it needs the AuthorizationManager, LoginManager, RegistrationManager and the RankingManager.
+Since the APIGateway dispatches the requests to the correct component, its development and integration can be done using a thread approach. With this approach the functionalities of the APIGateway can be implemented and tested in parallel with the development of the other components.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Diagrams/DispatcherIntegrationPlan.jpg}
+    \includegraphics[width=0.6\textwidth]{Diagrams/DispatcherIntegrationPlan.jpg}
     \caption{Dispatcher service}
     \label{fig:dispatcher}
 \end{figure}
 
 \subsubsection*{System integration}
-The system integration is the last step of the implementation, integration and test plan. The system integration is composed by the integration of the WebApp, WebServer, Application Server and the DBMS. The WebApp depends on the WebServer, the WebServer depends on the Application Server and the Application Server depends on the DBMS. Finally for the external services we have GitHub that depends on the Application Server.
+The system integration is the last step of the implementation and the integration. The system integration is composed by the integration of the WebApp, WebServer, Application Server and the DBMS. The WebApp depends on the WebServer, the WebServer depends on the Application Server and the Application Server depends on the DBMS. Finally for the external services we have GitHub that depends on the Application Server.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Diagrams/SystemIntegrationPlan.jpg}
+    \includegraphics[width=0.5\textwidth]{Diagrams/SystemIntegrationPlan.jpg}
     \caption{System integration}
     \label{fig:system_integration}
 \end{figure}
+\clearpage
 \subsection{System testing}
-\subsection{Additional specifications on testing}
+
+The primary objective of system testing is to validate the complete and integrated software system to ensure that it meets the specified requirements. This phase is critical to ensure that the system operates as intended in its real-world environment.\\
+The system testing phase will be conducted in accordance with the following plan:
+\begin{itemize}
+    \item \textbf{Functional Testing:} To check if the system performs all the functions specified in the RASD document correctly.
+    \item \textbf{Performance Testing:} To assess the system’s stability and responsiveness under various conditions. A useful benchmark for the CKB Platform is to evaluate the time taken to process a submission, build the project, run the tests and return the results. By analyzing the results of this tests we can discover bottlenecks and optimize the system accordingly.
+    \item \textbf{Security Testing:} To ensure the system's features designated for a specific role are accessible only to users with that role, as well as to identify and address any commond vulnerabilities specified in the ``OWASP Top Ten''.
+    \item \textbf{Load Testing}: To evaluate the system's performance under extreme workloads. Useful test cases for the CKB Platform is to simulate a large number of concurrent submissions and consequently evaluations.
+    \item \textbf{User Acceptance Testing (UAT):} To confirm that the system meets the end-user requirements and is ready for deployment.
+\end{itemize}
+
+\subsubsection{Test Environment}
+The testing environment is not particularly demanding since for the client side we only need a browser that support HTML, CSS and Javascript and for the server side it is necessary a basic server that supports the execution of an hypervisor for the virtualization in order to virtualize the EvaluationManager component. There are no strict requirements on the hardware because it depends on the number of users that will use the system and it will be calibrated according to the load test phase also.
+\subsection{Review and Approval}
+The testing phase will conclude with a review process, involving the development team, project manager, and key stakeholders. The system will be approved for deployment upon successful completion of all test scenarios and resolution of any critical issues.
