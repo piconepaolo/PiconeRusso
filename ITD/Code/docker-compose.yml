@@ -1,0 +1,35 @@
+name: ckb
+services:
+  app:
+    container_name: app_CKB
+    hostname: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+    depends_on:
+      - db
+    volumes:
+      - ./app:/code/app
+    environment:
+      APP_ENV: /run/secrets/app_env
+    secrets:
+      - app_env
+
+  db:
+    image: mongo
+    container_name: mongodb_CKB
+    command: [--auth]
+    restart: always
+    volumes:
+      - mongo:/data/db
+    ports:
+      - '27017:27017'
+
+secrets:
+  app_env:
+    file: app.env
+
+volumes:
+  mongo:
