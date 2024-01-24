@@ -1,2 +1,9 @@
 fastapi
 uvicorn[standard]
+pymongo
+python-dotenv
+python-jose[cryptography]
+passlib
+bcrypt==4.0.1 # https://github.com/logspace-ai/langflow/issues/1173
+python-multipart
+pydantic[email]
