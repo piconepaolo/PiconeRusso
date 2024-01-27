@@ -7,6 +7,7 @@ from app.utils.singleton import SingletonMeta
 AUTH_STR: str = "/auth"
 API_STR: str = "/api"
 USERS_STR: str = "/users"
+NOTIFICATIONS_STR: str = "/notifications"
 TOKEN_URL: str = f"{API_STR}{AUTH_STR}/token"
 EXPIRE_HOURS_USER_ACTIONS_TOKEN: int = 24 * 7  # 1 week
 ENV_FILE_PATH: str = "APP_ENV"
@@ -52,6 +53,7 @@ class DatabaseSettings(metaclass=SingletonMeta):
     USER_COLLECTION: str = "users"
     USER_ACTIONS_TOKEN_COLLECTION: str = "user_actions_tokens"
     AUTHENTICATION_TOKEN_COLLECTION: str = "authentication_tokens"
+    NOTIFICATION_COLLECTION: str = "notifications"
 
     @property
     def connection_url(self) -> str:
