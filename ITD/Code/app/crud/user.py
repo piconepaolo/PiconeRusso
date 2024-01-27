@@ -41,11 +41,11 @@ def get_user_by_id(db: deps.Database, user_id: str) -> Optional[schemas.User]:
     return user
 
 
-def get_user_by_email(db: deps.Database, email: str) -> Optional[schemas.User]:
+def get_user_by_email(db: deps.Database, email: str) -> Optional[schemas.UserInDB]:
     user = db[DatabaseSettings.USER_COLLECTION].find_one({"email": email})
     if user is None:
         return None
-    user = schemas.User(**user)
+    user = schemas.UserInDB(**user)
     return user
 
 

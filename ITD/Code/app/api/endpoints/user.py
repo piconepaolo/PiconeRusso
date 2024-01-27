@@ -42,3 +42,17 @@ def get_current_user(
     current_user: Annotated[schemas.User, Depends(deps.get_current_user)],
 ):
     return current_user
+
+
+@router.post("/logout")
+async def logout(
+    current_user: Annotated[schemas.User, Depends(deps.get_current_user)],
+    db: deps.Database = Depends(deps.get_db),
+):
+    result = await crud.invalidate_tokens(db=db, user=current_user)
+    if not result:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Logout failed",
+        )
+    return {"detail": "Logout successful"}

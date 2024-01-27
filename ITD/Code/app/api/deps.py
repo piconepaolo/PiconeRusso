@@ -20,10 +20,15 @@ def get_db() -> Database:
 
 def get_current_user(
     token: Annotated[str, Depends(deps.oauth2_scheme)], db=Depends(get_db)
-) -> schemas.User:
+) -> schemas.UserInDB:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    session_invalid = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Session is invalid",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
@@ -36,8 +41,11 @@ def get_current_user(
     except JWTError:
         raise credentials_exception
     user = crud.get_user_by_email(db, email=email)
+    token_invalidated = crud.is_token_invalidated(db, token)
     if user is None:
         raise credentials_exception
+    if token_invalidated:
+        raise session_invalid
     return user
 
 
