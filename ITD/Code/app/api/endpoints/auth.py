@@ -39,5 +39,5 @@ async def login_for_access_token(
     token_storage = schemas.TokenInDb(
         email=user.email, access_token=access_token, valid=True
     )
-    await crud.save_authentication_token(db, token_storage)
+    crud.save_authentication_token(db, token_storage)
     return {"access_token": access_token, "token_type": "bearer"}
