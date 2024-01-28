@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Copy the application code
 COPY ./app /code/app
 
+# Copy the tests
+COPY ./tests /code/tests
+
 # Expose the API port (if needed)
 EXPOSE 80
 

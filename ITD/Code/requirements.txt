@@ -7,3 +7,6 @@ passlib
 bcrypt==4.0.1 # https://github.com/logspace-ai/langflow/issues/1173
 python-multipart
 pydantic[email]
+pytest
+requests
+httpx

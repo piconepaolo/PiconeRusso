@@ -10,11 +10,14 @@ from app.api import deps
 from app.core import config, security
 from app.core.config import settings
 from app.database import mongo_client
+from starlette.config import environ
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.TOKEN_URL)
 
 
 def get_db() -> Database:
+    if environ.get("TESTING"):
+        return mongo_client.ckb_test
     return mongo_client.ckb
 
 
