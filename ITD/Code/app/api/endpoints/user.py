@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post(
     "/",
-    response_model=schemas.User,
+    response_model=schemas.UserResponse,
     status_code=status.HTTP_201_CREATED,
 )
 def create_user(
@@ -27,8 +27,8 @@ def create_user(
         is_educator = False
     else:
         is_educator = True
-    new_user = schemas.UserNoId(**user.model_dump(), is_educator=is_educator)
-    created_user = crud.create_user(db, new_user, user.password)
+    new_user = schemas.UserCreateDB(**user.model_dump(), is_educator=is_educator)
+    created_user = crud.create_user(db, new_user)
     if created_user is None:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -37,7 +37,9 @@ def create_user(
     return created_user
 
 
-@router.get("/me", response_model=schemas.UserInDB, response_model_exclude={"password"})
+@router.get(
+    "/me", response_model=schemas.UserResponse, response_model_exclude={"password"}
+)
 def get_current_user(
     current_user: Annotated[schemas.User, Depends(deps.get_current_user)],
 ):

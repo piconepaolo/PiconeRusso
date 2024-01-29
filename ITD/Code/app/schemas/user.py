@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from typing import Annotated
 
-from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
+from pydantic import BaseModel, EmailStr, Field, model_validator
 from pydantic.functional_validators import AfterValidator
 
 from app.core.security import MINIMUM_PASSWORD_LENGTH
@@ -27,41 +27,47 @@ def lower_case(v: str):
     return v.lower()
 
 
+def validate_name(v: str):
+    if len(v) > 20:
+        raise ValueError("Name must be at most 20 characters long")
+    pattern = r"^[a-zA-Z\s']+$"
+    if not re.match(pattern, v):
+        raise ValueError("Name must only contain letters")
+    return v.title()
+
+
 SecurePassword = Annotated[str, AfterValidator(check_password)]
 PolimiEmail = Annotated[
     EmailStr, AfterValidator(is_polimi_account), AfterValidator(lower_case)
 ]
+Name = Annotated[str, AfterValidator(validate_name)]
 
 
-class UserBase(BaseModel):
+class UserInfo(BaseModel):
     email: PolimiEmail
-    first_name: str = Field(max_length=20)
-    last_name: str = Field(max_length=20)
+    first_name: Name
+    last_name: Name
 
 
-class UserCreate(UserBase):
-    @field_validator("first_name", "last_name")
-    @classmethod
-    def check_name(cls, v: str):
-        pattern = r"^[a-zA-Z\s']+$"
-        if not re.match(pattern, v):
-            raise ValueError("Name must only contain letters")
-        return v.title()
-
-    password: SecurePassword
-
-
-class UserNoId(UserBase):
+class UserBase(UserInfo):
     is_educator: bool
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
 
-class UserInDB(UserNoId, UserCreate):
+class UserCreate(UserInfo):
+    password: SecurePassword
+
+
+class UserCreateDB(UserBase, UserCreate):
     ...
 
 
-class User(UserNoId):
+class User(UserBase, UserCreate):
     id: PyObjectId = Field(alias="_id")
+
+
+class UserResponse(UserBase):
+    ...
 
 
 class UserResetPassword(BaseModel):

@@ -3,6 +3,7 @@ from .authentication_token import (
     is_token_invalidated,
     save_authentication_token,
 )
+from .invitation import accept_invitation, create_invitation
 from .notification import create_notification
 from .user import (
     create_user,

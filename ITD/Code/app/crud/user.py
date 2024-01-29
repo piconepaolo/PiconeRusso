@@ -10,12 +10,11 @@ from app.core.security import get_password_hash
 
 
 def create_user(
-    db: deps.Database, user: schemas.UserNoId, password: str
+    db: deps.Database, user: schemas.UserCreateDB
 ) -> Optional[schemas.User]:
-    hashed_password = get_password_hash(password)
-    new_user = schemas.UserInDB(**user.model_dump(), password=hashed_password)
+    user.password = get_password_hash(user.password)
     users_collection = db[DatabaseSettings.USER_COLLECTION]
-    result = users_collection.insert_one(jsonable_encoder(new_user))
+    result = users_collection.insert_one(jsonable_encoder(user))
     if not (found_user := users_collection.find_one({"_id": result.inserted_id})):
         return None
     created_user = schemas.User(**found_user)
@@ -41,11 +40,11 @@ def get_user_by_id(db: deps.Database, user_id: str) -> Optional[schemas.User]:
     return user
 
 
-def get_user_by_email(db: deps.Database, email: str) -> Optional[schemas.UserInDB]:
+def get_user_by_email(db: deps.Database, email: str) -> Optional[schemas.User]:
     user = db[DatabaseSettings.USER_COLLECTION].find_one({"email": email})
     if user is None:
         return None
-    user = schemas.UserInDB(**user)
+    user = schemas.User(**user)
     return user
 
 

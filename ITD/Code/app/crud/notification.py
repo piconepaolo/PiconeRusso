@@ -13,7 +13,6 @@ def create_notification(
 ) -> Optional[schemas.Notification]:
     notification_collection = db[DatabaseSettings.NOTIFICATION_COLLECTION]
     result = notification_collection.insert_one(jsonable_encoder(notification))
-    print(result.inserted_id)
     if not (
         found_notification := notification_collection.find_one(
             {"_id": result.inserted_id}

@@ -54,6 +54,7 @@ class DatabaseSettings(metaclass=SingletonMeta):
     USER_ACTIONS_TOKEN_COLLECTION: str = "user_actions_tokens"
     AUTHENTICATION_TOKEN_COLLECTION: str = "authentication_tokens"
     NOTIFICATION_COLLECTION: str = "notifications"
+    INVITATION_COLLECTION: str = "invitations"
 
     @property
     def connection_url(self) -> str:

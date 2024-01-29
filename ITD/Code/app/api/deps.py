@@ -23,7 +23,7 @@ def get_db() -> Database:
 
 def get_current_user(
     token: Annotated[str, Depends(deps.oauth2_scheme)], db=Depends(get_db)
-) -> schemas.UserInDB:
+) -> schemas.User:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
