@@ -14,6 +14,7 @@ from .notification import (
     TournamentStatusNotification,
 )
 from .py_object_id import PyObjectId
+from .submission import Submission, SubmissionBase, SubmissionCreate
 from .user import (
     PasswordResetRequest,
     User,
