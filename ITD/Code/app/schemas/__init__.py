@@ -1,4 +1,5 @@
 from .authentication_token import Token, TokenData, TokenInDb
+from .fields import url
 from .invitation import (
     TeamInvitation,
     TeamInvitationCreate,

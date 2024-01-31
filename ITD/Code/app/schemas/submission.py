@@ -1,7 +1,8 @@
 from datetime import datetime
 
-from py_object_id import PyObjectId
 from pydantic import BaseModel, Field
+
+from .py_object_id import PyObjectId
 
 
 class SubmissionBase(BaseModel):
@@ -14,4 +15,4 @@ class SubmissionCreate(SubmissionBase):
 
 
 class Submission(SubmissionBase):
-    id: PyObjectId
+    id: PyObjectId = Field(alias="_id")
