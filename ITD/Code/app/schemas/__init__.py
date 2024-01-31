@@ -16,6 +16,7 @@ from .notification import (
 )
 from .py_object_id import PyObjectId
 from .submission import Submission, SubmissionBase, SubmissionCreate
+from .team import Team, TeamBase, TeamCreate
 from .user import (
     PasswordResetRequest,
     User,
