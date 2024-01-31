@@ -5,6 +5,7 @@ from starlette.testclient import TestClient
 
 from app import crud, schemas
 from app.api import deps
+from bson import ObjectId
 
 environ["TESTING"] = "True"
 
@@ -37,8 +38,8 @@ def team_create() -> schemas.TeamCreate:
 
 
 @fixture(scope="session")
-def add_team_member() -> list[schemas.PyObjectId]:
-    return [schemas.PyObjectId()]
+def team_members() -> list[ObjectId]:
+    return [ObjectId()]
 
 
 @fixture(scope="session")
@@ -54,8 +55,7 @@ def test_client(db: deps.Database):
         client.headers["Content-Type"] = "application/json"
         yield client
 
-    db.drop_collection("users")
-    db.drop_collection("authentication_tokens")
+    drop_collections(db)
 
 
 @fixture(scope="class")
@@ -68,8 +68,13 @@ def authorized_client(db: deps.Database, student_user_create: schemas.UserCreate
         client.headers["Authorization"] = f"Bearer {token}"
         yield client
 
+    drop_collections(db)
+
+
+def drop_collections(db: deps.Database):
     db.drop_collection("users")
     db.drop_collection("authentication_tokens")
+    db.drop_collection("teams")
 
 
 def create_user(student_user_create: schemas.UserCreate, client: TestClient):
