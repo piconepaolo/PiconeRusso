@@ -72,12 +72,12 @@ def add_team_members(
 ) -> schemas.Team:
     if not (new_team := crud.add_team_members(db, members_id, team_id, current_user)):
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=status.HTTP_400_BAD_REQUEST,
             detail="Error while adding members",
         )
     if not (new_team := crud.get_team(db, team_id)):
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Error while getting team",
         )
     return new_team
