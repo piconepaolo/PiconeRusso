@@ -10,6 +10,7 @@ USERS_STR: str = "/users"
 NOTIFICATIONS_STR: str = "/notifications"
 SUBMISSIONS_STR: str = "/submissions"
 TEAMS_STR: str = "/teams"
+TOURNAMENTS_STR: str = "/tournaments"
 TOKEN_URL: str = f"{API_STR}{AUTH_STR}/token"
 EXPIRE_HOURS_USER_ACTIONS_TOKEN: int = 24 * 7  # 1 week
 ENV_FILE_PATH: str = "APP_ENV"
@@ -59,6 +60,7 @@ class DatabaseSettings(metaclass=SingletonMeta):
     INVITATION_COLLECTION: str = "invitations"
     SUBMISSION_COLLECTION: str = "submissions"
     TEAM_COLLECTION: str = "teams"
+    TOURNAMENT_COLLECTION: str = "tournaments"
 
     @property
     def connection_url(self) -> str:

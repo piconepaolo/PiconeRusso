@@ -26,3 +26,11 @@ from .user import (
     UserResetPassword,
     UserResponse,
 )
+from .tournament import (
+    Tournament,
+    TournamentBase,
+    TournamentCreate,
+    TournamentUpdate,
+    TournamentStatus,
+)
+from .battle import Battle

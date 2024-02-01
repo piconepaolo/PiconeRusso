@@ -54,9 +54,19 @@ def get_current_user(
 
 def get_current_educator(
     current_user: Annotated[schemas.User, Depends(get_current_user)]
-):
+) -> schemas.User:
     if not current_user.is_educator:
         raise HTTPException(
             status_code=401, detail="The user doesn't have enough privileges"
+        )
+    return current_user
+
+
+def get_current_student(
+    current_user: Annotated[schemas.User, Depends(get_current_user)]
+) -> schemas.User:
+    if current_user.is_educator:
+        raise HTTPException(
+            status_code=401, detail="An educator cannot perform this action"
         )
     return current_user

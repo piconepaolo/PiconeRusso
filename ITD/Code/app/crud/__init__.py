@@ -20,3 +20,11 @@ from .user import (
     update_password,
     update_user,
 )
+from .tournament import (
+    add_educator_to_tournament,
+    create_tournament,
+    get_tournament,
+    subscribe_student_to_tournament,
+    update_tournament,
+    delete_tournament,
+)
