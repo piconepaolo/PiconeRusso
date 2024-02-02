@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
+from bson import ObjectId
 from pydantic import BaseModel, Field
 
 from .fields import url
@@ -19,4 +20,4 @@ class TeamCreate(BaseModel):
 
 
 class Team(TeamBase):
-    id: PyObjectId = Field(alias="_id")
+    id: PyObjectId = Field(alias="_id", default_factory=ObjectId)

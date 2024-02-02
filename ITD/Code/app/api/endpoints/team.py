@@ -8,35 +8,35 @@ from app.api import deps
 router = APIRouter()
 
 
-@router.post(
-    "/",
-    response_model=schemas.Team,
-    status_code=status.HTTP_201_CREATED,
-)
-def create_team(
-    team: schemas.TeamCreate,
-    db: Annotated[deps.Database, Depends(deps.get_db)],
-    current_user: schemas.User = Depends(deps.get_current_user),
-):
-    created_team = crud.create_team(db, team, current_user)
-    if created_team is None:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error while creating team",
-        )
-    # Add the creator of the team as a member of the team
-    if not crud.add_team_members(db, [current_user.id], created_team.id, current_user):
-        if not crud.delete_team(db, created_team):
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Error while deleting team",
-            )
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Error while adding team members",
-        )
-    new_team = crud.get_team(db, created_team.id)
-    return new_team
+# @router.post(
+#     "/",
+#     response_model=schemas.Team,
+#     status_code=status.HTTP_201_CREATED,
+# )
+# def create_team(
+#     team: schemas.TeamCreate,
+#     db: Annotated[deps.Database, Depends(deps.get_db)],
+#     current_user: schemas.User = Depends(deps.get_current_user),
+# ):
+#     created_team = crud.create_team(db, team, current_user)
+#     if created_team is None:
+#         raise HTTPException(
+#             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+#             detail="Error while creating team",
+#         )
+#     # Add the creator of the team as a member of the team
+#     if not crud.add_team_members(db, [current_user.id], created_team.id, current_user):
+#         if not crud.delete_team(db, created_team):
+#             raise HTTPException(
+#                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+#                 detail="Error while deleting team",
+#             )
+#         raise HTTPException(
+#             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+#             detail="Error while adding team members",
+#         )
+#     new_team = crud.get_team(db, created_team.id)
+#     return new_team
 
 
 @router.post(

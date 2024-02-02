@@ -103,3 +103,86 @@ def subscribe_student_to_tournament(
             detail="Could not retrieve tournament",
         )
     return tournament
+
+
+@router.post(
+    "/{tournament_id}/battle",
+    response_model=schemas.Tournament,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_battle(
+    tournament_id: schemas.PyObjectId,
+    battle: schemas.BattleCreate,
+    db: deps.Database = Depends(deps.get_db),
+    current_user: schemas.User = Depends(deps.get_current_educator),
+) -> schemas.Tournament:
+    if not crud.get_tournament(db, tournament_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Tournament not found",
+        )
+    if not (updated_tournament := crud.create_battle(db, tournament_id, battle)):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not create battle",
+        )
+    return updated_tournament
+
+
+@router.post(
+    "/{tournament_id}/{battle_id}/create_team",
+    response_model=schemas.Tournament,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_team(
+    tournament_id: schemas.PyObjectId,
+    battle_id: schemas.PyObjectId,
+    team: schemas.TeamCreate,
+    db: deps.Database = Depends(deps.get_db),
+    current_user: schemas.User = Depends(deps.get_current_user),
+) -> schemas.Tournament:
+    if not crud.get_tournament(db, tournament_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Tournament not found",
+        )
+    if not (
+        updated_tournament := crud.create_team(
+            db, tournament_id, battle_id, team, current_user
+        )
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not create team",
+        )
+    return updated_tournament
+
+
+@router.put(
+    "/{tournament_id}/{battle_id}/{team_id}/add_member",
+    response_model=Optional[schemas.Tournament],
+    status_code=status.HTTP_200_OK,
+)
+def add_team_member(
+    tournament_id: schemas.PyObjectId,
+    team_id: schemas.PyObjectId,
+    battle_id: schemas.PyObjectId,
+    member_id: schemas.PyObjectId,
+    db: deps.Database = Depends(deps.get_db),
+    current_user: schemas.User = Depends(deps.get_current_user),
+) -> Optional[schemas.Tournament]:
+    if not crud.get_tournament(db, tournament_id):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Tournament not found",
+        )
+    # if not (
+    #     updated_tournament := crud.add_team_member(
+    #         db, tournament_id, battle_id, team_id, member_id
+    #     )
+    # ):
+    #     raise HTTPException(
+    #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+    #         detail="Could not add team member",
+    #     )
+    return crud.add_team_member(db, tournament_id, team_id, battle_id, member_id)

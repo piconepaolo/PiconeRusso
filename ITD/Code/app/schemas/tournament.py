@@ -3,8 +3,8 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-from .py_object_id import PyObjectId
 from .battle import Battle
+from .py_object_id import PyObjectId
 
 
 class TournamentStatus(str, Enum):
@@ -27,11 +27,11 @@ class TournamentPartecipants(BaseModel):
 
 
 class TournamentCreate(TournamentBase):
-    ...
+    pass
 
 
 class TournamentUpdate(TournamentBase):
-    ...
+    pass
 
 
 class Tournament(TournamentCreate, TournamentPartecipants):
