@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from bson import ObjectId
+from faker import Faker
 from fastapi.encoders import jsonable_encoder
 from pytest import fixture
 from starlette.config import environ
@@ -8,8 +9,26 @@ from starlette.testclient import TestClient
 
 from app import crud, schemas
 from app.api import deps
+from app.github import schemas as github_schemas
+from app.github.GitHub import GitHubClient
 
 environ["TESTING"] = "True"
+
+
+@fixture(scope="session")
+def repository_create() -> github_schemas.RepositoryCreate:
+    faker = Faker()
+    name = faker.word()
+    description = faker.sentence()
+    return github_schemas.RepositoryCreate(
+        name=name,
+        description=description,
+    )
+
+
+@fixture(scope="session")
+def github_client() -> GitHubClient:
+    return GitHubClient()
 
 
 @fixture(scope="session")
