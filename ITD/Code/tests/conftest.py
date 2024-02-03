@@ -1,3 +1,6 @@
+from datetime import datetime, timedelta
+
+from bson import ObjectId
 from fastapi.encoders import jsonable_encoder
 from pytest import fixture
 from starlette.config import environ
@@ -5,7 +8,6 @@ from starlette.testclient import TestClient
 
 from app import crud, schemas
 from app.api import deps
-from bson import ObjectId
 
 environ["TESTING"] = "True"
 
@@ -28,6 +30,58 @@ def student_user_create() -> schemas.UserCreate:
         last_name="Student",
         password="student",
     )
+
+
+@fixture(scope="session")
+def tournament_create() -> schemas.TournamentCreate:
+    return schemas.TournamentCreate(
+        name="Tournament",
+        description="Tournament description",
+        start_date=datetime.utcnow(),
+        registration_deadline=datetime.utcnow() + timedelta(days=20),
+    )
+
+
+@fixture(scope="session")
+def battle_create() -> schemas.BattleCreate:
+    return schemas.BattleCreate(
+        name="Battle",
+        maximum_team_size=5,
+        minimum_team_size=3,
+        registration_deadline=datetime.utcnow() + timedelta(days=10),
+        submission_deadline=datetime.utcnow() + timedelta(days=30),
+    )
+
+
+@fixture(scope="session")
+def tournament_db(
+    db: deps.Database, tournament_create: schemas.TournamentCreate
+) -> schemas.Tournament:
+    tournament = crud.create_tournament(db, tournament_create)
+    return schemas.Tournament(**jsonable_encoder(tournament))
+
+
+@fixture(scope="session")
+def battle_db(
+    db: deps.Database,
+    tournament_db: schemas.Tournament,
+    battle_create: schemas.BattleCreate,
+) -> schemas.Tournament:
+    tournament = crud.create_battle(db, tournament_db.id, battle_create)
+    return schemas.Tournament(**jsonable_encoder(tournament))
+
+
+@fixture(scope="class")
+def team_db(
+    db: deps.Database,
+    battle_db: schemas.Tournament,
+    team_create: schemas.TeamCreate,
+    current_student: schemas.User,
+) -> schemas.Tournament:
+    tournament = crud.create_team(
+        db, battle_db.id, battle_db.battles[0].id, team_create, current_student
+    )
+    return schemas.Tournament(**jsonable_encoder(tournament))
 
 
 @fixture(scope="session")
@@ -59,11 +113,24 @@ def test_client(db: deps.Database):
 
 
 @fixture(scope="class")
-def authorized_client(db: deps.Database, student_user_create: schemas.UserCreate):
+def authorized_student(db: deps.Database, student_user_create: schemas.UserCreate):
     import app.main
 
     with TestClient(app.main.app) as client:
         token = create_and_login_user(student_user_create, client)
+        client.headers["Content-Type"] = "application/json"
+        client.headers["Authorization"] = f"Bearer {token}"
+        yield client
+
+    drop_collections(db)
+
+
+@fixture(scope="class")
+def authorized_educator(db: deps.Database, educator_user_create: schemas.UserCreate):
+    import app.main
+
+    with TestClient(app.main.app) as client:
+        token = create_and_login_user(educator_user_create, client)
         client.headers["Content-Type"] = "application/json"
         client.headers["Authorization"] = f"Bearer {token}"
         yield client
@@ -109,9 +176,18 @@ def create_and_login_user(
 
 
 @fixture(scope="class")
-def current_user_id(
+def current_educator(
+    db: deps.Database, educator_user_create: schemas.UserCreate
+) -> schemas.User:
+    user = crud.get_user_by_email(db, educator_user_create.email)
+    assert user is not None
+    return user
+
+
+@fixture(scope="class")
+def current_student(
     db: deps.Database, student_user_create: schemas.UserCreate
-) -> schemas.PyObjectId:
+) -> schemas.User:
     user = crud.get_user_by_email(db, student_user_create.email)
     assert user is not None
-    return user.id
+    return user

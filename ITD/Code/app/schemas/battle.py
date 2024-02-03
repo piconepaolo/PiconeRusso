@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 from bson import ObjectId
 from pydantic import BaseModel, Field
@@ -13,12 +14,13 @@ class CodeKata(BaseModel):
 
 
 class BattleBase(BaseModel):
+    name: str
     registration_deadline: datetime
     submission_deadline: datetime
     maximum_team_size: int
     minimum_team_size: int = 1
-    kata: CodeKata
-    github_repository: url
+    kata: Optional[CodeKata] = None
+    github_repository: Optional[url] = None
 
 
 class BattleCreate(BattleBase):
