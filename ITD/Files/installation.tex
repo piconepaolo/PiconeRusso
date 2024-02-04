@@ -1,0 +1,10 @@
+Since the applicaton is dockerized the installation process is very simple. \\
+In order to not expose sensible data the app has to read an environment file in which there are the sensible and configuration data. The file is called \textit{app.env} and it should be placed in the root of the project. The file can be downloaded from the following \href{https://drive.google.com/file/d/1KUKvAb3Tq8bOUhCrtx5sqfwQsWZShJam/view?usp=sharing}{Google Drive link} \\
+Once downloaded the \textit{app.env} file, the installation process is the following:
+\begin{itemize}
+        \item Clone the repository from the following \href{https://github.com/piconepaolo/PiconeRusso/tree/main/ITD/Code}{GitHub Repository}
+        \item Place the \textit{app.env} file in the root of the source code \textit{Code}
+        \item Build the docker images by running the command \textit{docker-compose build}
+        \item Run the docker images by running the command \textit{docker-compose up}
+        \item The application is now running and it is possible to access it at the following address: \textit{http://localhost:8080}
+\end{itemize}

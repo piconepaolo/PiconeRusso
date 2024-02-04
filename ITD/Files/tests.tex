@@ -1,0 +1,12 @@
+The perfomed tests does not completely respected the testing strategy included in the DD. The included tests are system tests that calls the API endpoints and checks the response. The tests, as described above, are implemented using the \textit{PyTest} framework.
+The main test cases implemented are the following:
+\begin{itemize}
+        \item \textbf{Creation and login of a user}: the test checks if a user by sending valid credentials is returned a JWT token.
+        \item \textbf{Creation of a Tournament}: the test checks if a user has the right permission to create a tournament (is an educator) and if the tournament is created with the provided details.
+        \item \textbf{Creation of a Battle}: the test checks if a user has the right permission to create a battle (is an educator) and if the battle is created with the provided details.
+        \item \textbf{Creation of a Team}: the test checks if a user has the right permission to create a team (is a student) and if the team is created with the provided details.
+        \item \textbf{Add a student to a team}: the test checks if a user has the right permission to add a student to a team: is a member of an already created team and all the limits about the number of students in a team are respected.
+        \item \textbf{Creation of a repository}: the test checks the correct creation of a GitHub repository for a battle.
+        \item \textbf{Invite collaborato to a repository}: the test checks if the call to the GitHub API to invite a collaborator to a repository is successful.
+        \item \textbf{Download repository}: the tests checks if the call to the GitHub API to download a repository is successful.
+\end{itemize}

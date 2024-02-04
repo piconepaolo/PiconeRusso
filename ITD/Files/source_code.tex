@@ -1,0 +1,14 @@
+The folder of the source code includes two folders and installation scripts. The folders are:
+\begin{itemize}
+        \item \textbf{app}: contains the source code of the application.
+        \begin{itemize}
+            \item \textbf{api}: contains the source code of the endpoints and the dependencies used by the apis.
+            \item \textbf{core}: contains the application configuration file as well as security settings.
+            \item \textbf{crud}: contains the source code of the crud operations for the main entities of the application.
+            \item \textbf{EvaluationManager}: contains the source code of the evaluation manager.
+            \item \textbf{schemas}: contains the source code of the Pydantic schemas used both by apis and crud operations.
+            \item \textbf{github}: it's a module that provides methods to interact with the GitHub API.
+            \item \textbf{utils}: it's a general purpose module that provides some useful methods to the application like singleton to implement the singleton pattern and mongo utilities to embed the Pydantic models in nested MongoDB documents.
+        \end{itemize}
+        \item \textbf{tests}: contains the source code of the tests. The concern of the tests is easily understandable by the name of the files which contains the entities that are tested.
+\end{itemize}
