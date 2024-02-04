@@ -1,0 +1,19 @@
+Since the developed code is referred to the prototype of the platform, the functions and the requirements implemented are the ones that are strictly necessary to show the feasibility of the project. The document does not cover the entire set of requirements and functions described in the RASD and DD documents.
+
+The following list shows the functions actually implemented:
+
+\begin{itemize}
+    \item \textbf{User authentication}: the system allows the user to register and login. It is compliant with \textit{OAuth2} protocol.
+    \item \textbf{Creation of a Tournament/Battle/Team}: since the adopted architcture is MVC, these entities are implemented as models with their respective controllers and views.
+    \item \textbf{Automatic Evaluation}: this function has been implemented as an endpoint that the github action set up by the user can call. The calculation of the score is mocked returing a random number between 0 and 100.
+    \item \textbf{Authorization Manager}: the handling of the permissions is granular since every path operation that require some kind of permissions has a middleware that checks the user's permissions.
+\end{itemize}
+
+The following list shows the functions that are not implemented:
+
+\begin{itemize}
+    \item \textbf{User Interfaces}: the user interfaces are not implemented. The user interface does not provide any additional functionality to the system since the system can be interacted with using the API.
+    \item \textbf{Manual Evaluation}
+    \item \textbf{Educator Invitation}
+    \item \textbf{Notification of the user}
+\end{itemize}
