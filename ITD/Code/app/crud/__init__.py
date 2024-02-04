@@ -5,6 +5,7 @@ from .authentication_token import (
 )
 from .invitation import accept_invitation, create_invitation
 from .notification import create_notification
+from .submission import create_submission, get_submission_by_id
 from .team import (  # create_team,
     add_team_members,
     delete_team,
@@ -18,8 +19,10 @@ from .tournament import (
     create_team,
     create_tournament,
     delete_tournament,
+    get_battle,
     get_tournament,
     subscribe_student_to_tournament,
+    update_team_score,
     update_tournament,
 )
 from .user import (

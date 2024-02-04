@@ -11,6 +11,7 @@ NOTIFICATIONS_STR: str = "/notifications"
 SUBMISSIONS_STR: str = "/submissions"
 TEAMS_STR: str = "/teams"
 TOURNAMENTS_STR: str = "/tournaments"
+SUBMISSIONS_STR: str = "/submissions"
 TOKEN_URL: str = f"{API_STR}{AUTH_STR}/token"
 EXPIRE_HOURS_USER_ACTIONS_TOKEN: int = 24 * 7  # 1 week
 ENV_FILE_PATH: str = "APP_ENV"

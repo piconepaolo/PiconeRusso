@@ -5,6 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from app import schemas, utils
 from app.api import deps
 from app.core.config.settings import DatabaseSettings
+from app.github.GitHub import GitHubClient
 
 
 def create_tournament(
@@ -71,12 +72,28 @@ def delete_tournament(db: deps.Database, tournament_id: schemas.PyObjectId) -> b
     return result.deleted_count != 0
 
 
+def get_battle(
+    db: deps.Database, tournament_id: schemas.PyObjectId, battle_id: schemas.PyObjectId
+) -> Optional[schemas.Battle]:
+    tournament_collection = db[DatabaseSettings.TOURNAMENT_COLLECTION]
+    result = tournament_collection.find_one(
+        {"_id": tournament_id, "battles._id": battle_id}, {"battles.$": 1}
+    )
+    if not result:
+        return None
+    return schemas.Battle(**result["battles"][0])
+
+
 def create_battle(
     db: deps.Database,
     tournament_id: schemas.PyObjectId,
     battle_create: schemas.BattleCreate,
 ) -> Optional[schemas.Tournament]:
-    battle = schemas.Battle(**battle_create.model_dump())
+    owner = GitHubClient.owner
+    github_repository = f"https://www.github.com/{owner}/{battle_create.name}"
+    battle = schemas.Battle(
+        **battle_create.model_dump(), github_repository=github_repository
+    )
     tournament_collection = db[DatabaseSettings.TOURNAMENT_COLLECTION]
     result = tournament_collection.update_one(
         {"_id": tournament_id},
@@ -114,6 +131,18 @@ def add_team_member(
     member_id: schemas.PyObjectId,
 ) -> Optional[schemas.Tournament]:
     tournament_collection = db[DatabaseSettings.TOURNAMENT_COLLECTION]
+    if not (
+        result_battle := tournament_collection.find_one(
+            {"_id": tournament_id, "battles._id": battle_id},
+            {"battles.$": 1},
+        )
+    ):
+        return None
+    battle = schemas.Battle(**result_battle["battles"][0])
+    print(battle.maximum_team_size)
+    team_members = get_team_members(db, tournament_id, battle_id, team_id)
+    if len(team_members) + 1 > battle.maximum_team_size:
+        return None
     result = tournament_collection.update_one(
         {"_id": tournament_id, "battles.teams._id": team_id},
         {"$addToSet": {"battles.$[b].teams.$[t].members": member_id}},
@@ -122,3 +151,44 @@ def add_team_member(
     if result.modified_count == 0:
         return None
     return get_tournament(db, tournament_id)
+
+
+def update_team_score(
+    db: deps.Database,
+    submission: schemas.Submission,
+    score: int,
+) -> Optional[int]:
+    tournament_collection = db[DatabaseSettings.TOURNAMENT_COLLECTION]
+    result = tournament_collection.update_one(
+        {
+            "_id": submission.tournament_id,
+            "battles._id": submission.battle_id,
+            "battles.teams._id": submission.team_id,
+        },
+        {"$set": {"battles.$[b].teams.$[t].score": score}},
+        array_filters=[{"b._id": submission.battle_id}, {"t._id": submission.team_id}],
+    )
+    if result.modified_count == 0:
+        return None
+    return score
+
+
+def get_team_members(
+    db: deps.Database,
+    tournament_id: schemas.PyObjectId,
+    battle_id: schemas.PyObjectId,
+    team_id: schemas.PyObjectId,
+) -> list[schemas.PyObjectId]:
+    tournament_collection = db[DatabaseSettings.TOURNAMENT_COLLECTION]
+    result = tournament_collection.find_one(
+        {
+            "_id": tournament_id,
+            "battles._id": battle_id,
+            "battles.teams._id": team_id,
+        },
+        {"battles.$": 1},
+    )
+    if not result:
+        return []
+    team = schemas.Team(**result["battles"][0]["teams"][0])
+    return team.members if team.members else []

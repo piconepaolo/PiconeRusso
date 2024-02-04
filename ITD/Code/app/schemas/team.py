@@ -21,3 +21,4 @@ class TeamCreate(BaseModel):
 
 class Team(TeamBase):
     id: PyObjectId = Field(alias="_id", default_factory=ObjectId)
+    score: int = 0

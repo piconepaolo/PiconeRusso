@@ -20,7 +20,6 @@ class BattleBase(BaseModel):
     maximum_team_size: int
     minimum_team_size: int = 1
     kata: Optional[CodeKata] = None
-    github_repository: Optional[url] = None
 
 
 class BattleCreate(BattleBase):
@@ -29,4 +28,5 @@ class BattleCreate(BattleBase):
 
 class Battle(BattleBase):
     id: PyObjectId = Field(alias="_id", default_factory=ObjectId)
+    github_repository: url
     teams: list[Team] = []

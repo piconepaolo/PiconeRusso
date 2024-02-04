@@ -1,9 +1,18 @@
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Depends,
+    HTTPException,
+    UploadFile,
+    status,
+)
 
 from app import crud, schemas
 from app.api import deps
+from app.github import schemas as github_schemas
+from app.github.GitHub import GitHubClient
 
 router = APIRouter()
 
@@ -111,6 +120,7 @@ def subscribe_student_to_tournament(
     status_code=status.HTTP_201_CREATED,
 )
 def create_battle(
+    background_tasks: BackgroundTasks,
     tournament_id: schemas.PyObjectId,
     battle: schemas.BattleCreate,
     db: deps.Database = Depends(deps.get_db),
@@ -126,6 +136,17 @@ def create_battle(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Could not create battle",
         )
+    github_client = GitHubClient()
+    repository_create = github_schemas.RepositoryCreate(
+        name=battle.name,
+        private=True,
+    )
+    background_tasks.add_task(github_client.create_repository, repository_create)
+    background_tasks.add_task(
+        github_client.invite_collaborator,
+        battle.name,
+        current_user.github_username,
+    )
     return updated_tournament
 
 
@@ -176,13 +197,55 @@ def add_team_member(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Tournament not found",
         )
-    # if not (
-    #     updated_tournament := crud.add_team_member(
-    #         db, tournament_id, battle_id, team_id, member_id
-    #     )
-    # ):
-    #     raise HTTPException(
-    #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-    #         detail="Could not add team member",
-    #     )
-    return crud.add_team_member(db, tournament_id, team_id, battle_id, member_id)
+    if not (
+        result := crud.add_team_member(db, tournament_id, team_id, battle_id, member_id)
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not add team member",
+        )
+    return result
+
+
+@router.post("/upload_files")
+async def upload_files(
+    tournament_id: schemas.PyObjectId,
+    battle_id: schemas.PyObjectId,
+    files: list[UploadFile],
+    db: deps.Database = Depends(deps.get_db),
+    current_user: schemas.User = Depends(deps.get_current_educator),
+):
+    github_client = GitHubClient()
+    if not (battle := crud.get_battle(db, tournament_id, battle_id)):
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Tournament not found",
+        )
+    for file in files:
+        if file.filename:
+            response = await github_client.upload_file(battle.name, file)
+            if response.status_code != 201:
+                raise HTTPException(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    detail="Could not upload file",
+                )
+    return {"detail": "Files uploaded successfully"}
+
+
+# @router.get("/download_repository_zip/")
+# def download_repository_zip(
+#     owner: str,
+#     repository: str,
+#     background_tasks: BackgroundTasks,
+#     battle_id: schemas.PyObjectId,
+# ):
+#     github_client = GitHubClient()
+#     created_file = github_client.download_repository_zip(owner, repository)
+#     if not created_file:
+#         raise HTTPException(
+#             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+#             detail="Could not download repository zip",
+#         )
+#     background_tasks.add_task(
+
+#     )

@@ -47,6 +47,7 @@ class UserInfo(BaseModel):
     email: PolimiEmail
     first_name: Name
     last_name: Name
+    github_username: str
 
 
 class UserBase(UserInfo):
@@ -59,7 +60,7 @@ class UserCreate(UserInfo):
 
 
 class UserCreateDB(UserBase, UserCreate):
-    ...
+    pass
 
 
 class User(UserBase, UserCreate):
@@ -67,7 +68,7 @@ class User(UserBase, UserCreate):
 
 
 class UserResponse(UserBase):
-    ...
+    pass
 
 
 class UserResetPassword(BaseModel):

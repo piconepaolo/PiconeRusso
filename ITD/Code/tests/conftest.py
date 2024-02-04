@@ -38,6 +38,7 @@ def educator_user_create() -> schemas.UserCreate:
         first_name="Educator",
         last_name="Educator",
         password="educator",
+        github_username="educator",
     )
 
 
@@ -48,6 +49,7 @@ def student_user_create() -> schemas.UserCreate:
         first_name="Student",
         last_name="Student",
         password="student",
+        github_username="piconepaolo",
     )
 
 

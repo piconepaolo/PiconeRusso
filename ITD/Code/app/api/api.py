@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.endpoints import auth, notification, team, user, tournament
+from app.api.endpoints import auth, notification, submission, team, tournament, user
 from app.core.config import settings
 
 api_router = APIRouter()
@@ -13,4 +13,7 @@ api_router.include_router(
 api_router.include_router(team.router, prefix=settings.TEAMS_STR, tags=["teams"])
 api_router.include_router(
     tournament.router, prefix=settings.TOURNAMENTS_STR, tags=["tournaments"]
+)
+api_router.include_router(
+    submission.router, prefix=settings.SUBMISSIONS_STR, tags=["submissions"]
 )
