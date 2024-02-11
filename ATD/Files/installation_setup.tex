@@ -1,0 +1,28 @@
+The installation and the setup of the project was performed following the documentation written in the section \textit{Installation Instruction} of the ITD document.
+\subsection{Installation Steps}
+The steps perfomed in order to configure the environment and to run the project are the following:
+\begin{itemize}
+        \item Installation and setup of \textbf{\textit{Apache Kafka}}
+        \begin{itemize}
+            \item Kafka was downloaded from the official website \href{https://kafka.apache.org/downloads}{Apache Kafka} following the installation instruction provided in the official documentation.
+            \item The configuration of the \textit{server.properties} file was performed following the istruction provided by the other group.
+        \end{itemize}
+        \item Installation and setup of \textbf{\textit{SonarQube Server}}
+        \begin{itemize}
+            \item SonarQube was downloaded from the official website \href{https://www.sonarqube.org/downloads/}{SonarQube} following the installation instruction provided in the official documentation.
+            \item The configuration of the \textit{sonar.properties} file was performed following the istruction provided by the other group.
+            \item After the installation was perfomed the SonarQube server was started and the web interface was accessed in order to create a \textit{User Token} that was used to authenticate the \textit{SonarScanner}.
+        \end{itemize}
+        \item Installation and setup of \textbf{\textit{SonarScanner}}
+        \begin{itemize}
+            \item SonarScanner was downloaded from the official website \href{https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/}{SonarScanner} following the installation instruction provided in the official documentation.
+            \item The PATH environment variable was set in order to make the \textit{sonar-scanner} command available by the CKB app at runtime as written in the group instructions.
+        \end{itemize}
+        \item Installation and setup of \textbf{\textit{PostgreSQL}}
+        \begin{itemize}
+            \item PostgreSQL was downloaded from the official website \href{https://www.postgresql.org/download/}{PostgreSQL} following the installation instruction provided in the official documentation.
+            \item As the ITD document states, two databases were created: one for \textit{Sonar} and another for the \textit{CKB} app.
+            \item Moreover there were created two users: one for \textit{Sonar} and another for the \textit{CKB} app.
+        \end{itemize}
+        \item Installation of \textbf{\textit{Ngrok}}: the installation was performed following the instruction provided in the official documentation.
+\end{itemize}
