@@ -1,0 +1,101 @@
+\input{commandsFile}
+
+\begin{document}
+
+%TITLE PAGE
+
+\begin{titlepage}
+
+%LOGO
+
+{\begin{table}[t!]
+\centering
+\begin{tabu} to \textwidth { X[1.3,r,p] X[1.7,l,p] }
+\textcolor{Blue}
+{\textbf{\small{CodeKataBattle project by Russo Mario and Picone Paolo}}} & \includegraphics[scale=0.5]{Images/PolimiLogo}
+\end{tabu}
+\end{table}}~\\ [7cm]
+
+%TITLE
+
+\begin{flushleft}
+
+%Replace the text string with your title
+{\textcolor{Blue}{\textbf{\Huge{Acceptance Testing Document}}}} \\ [1cm]
+
+\end{flushleft}
+
+\end{titlepage}
+
+%Define deliverable specific info
+%Replace cell contents where needed
+\begin{table}[h!]
+\begin{tabu} to \textwidth { X[0.3,r,p] X[0.7,l,p] }
+\hline
+
+\textbf{Deliverable:} & ATD\\
+\textbf{Title:} & Acceptance Testing \\
+\textbf{Authors:} & Picone Paolo and Russo Mario\\
+\textbf{Version:} & 1.0 \\ 
+\textbf{Date:} & 8-January-2024 \\
+\textbf{Download page:} & https://github.com/piconepaolo/PiconeRusso \\
+\textbf{Copyright:} & Copyright © 2024, Picone Paolo and Russo Mario – All rights reserved \\
+\hline
+\end{tabu}
+\end{table}
+
+
+
+
+\setcounter{page}{2}
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+The team that performed the \textit{Acceptance Testing} of the prototype of the CKB platform is composed by two members:
+\begin{itemize}
+        \item Russo Mario <mario1.russo@mail.polimi.it>
+        \item Picone Paolo <paolo.picone@mail.polimi.it>
+\end{itemize}
+
+The project analyzed in this document is the \textit{ITD} performed by the group Saccone, Sissa and Zappia. The project is available at the following link: \href{https://github.com/alessandrosaccone/SacconeSissaZappia}{SacconeSissaZappia} \\
+The main documents used for references are the \href{https://github.com/alessandrosaccone/SacconeSissaZappia/blob/main/DeliveryFolder/RASDv1.pdf}{RASD} and the \href{https://github.com/alessandrosaccone/SacconeSissaZappia/blob/main/DeliveryFolder/ITDv1.pdf}{ITD} of the project. The main usage of the \textit{RASD} was to extract the features that the group identified as well as to extract some useful Test Cases on which to perform the \textit{Acceptance Testing}. The \textit{ITD} was used to understand the structure of the code, the technologies used and the configuration steps. \\
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Installation Setup}}}
+\label{sect:installation_setup}
+\input{Files/installation_setup}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Acceptance Testing}}}
+\label{sect:acceptance_testing}
+\input{Files/acceptance_testing}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Additional Considerations}}}
+\label{sect:additional}
+\input{Files/additional}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Effort Spent}}}
+\label{sect:effort}
+\input{Files/effort}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+\bibliography{main}
+\begin{itemize}
+        \item Document written using \LaTeX  \ and Visual Studio Code
+        \item SacconeSissaZappia Repository: \href{https://github.com/alessandrosaccone/SacconeSissaZappia}{GitHub Repository}
+        \item SonarQube: \href{https://www.sonarqube.org/}{SonarQube}
+        \item Apache Kafka: \href{https://kafka.apache.org/}{Apache Kafka}
+        \item PostgreSQL: \href{https://www.postgresql.org/}{PostgreSQL}
+        \item Ngrok: \href{https://ngrok.com/}{Ngrok}
+\end{itemize}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\end{document}
